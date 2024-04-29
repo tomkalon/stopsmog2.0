@@ -1,0 +1,13 @@
+.map {
+  &-shadow {
+    filter: drop-shadow(5px 5px 5px #5d7382);
+  }
+  .label {
+    background: aliceblue;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+  }
+}
+

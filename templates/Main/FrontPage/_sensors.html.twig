@@ -13,9 +13,9 @@
         <tr>
             <td>
                 {% if sensor.measurements[0].createdAt|date('Y-m-d H:i:s') < "now"|date_modify("-3 hour")|date("Y-m-d H:i:s", "Europe/Warsaw") %}
-                    <img src="{{ asset('assets/images/active-ff75012d4de326f7a01f0f86369fea02.svg') }}" height="15" alt="Active">
+                    <img src="{{ asset('build/images/active.svg') }}" height="15" alt="Active">
                 {% else %}
-                    <img src="{{ asset('assets/images/inactive-474c931fd2bcbf993e6d93c5ee59d0ef.svg') }}" height="15" alt="Inactive">
+                    <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
                 {% endif %}
 
             </td>
