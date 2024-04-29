@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -25,6 +26,16 @@ Encore
         from: 'assets/images/',
         to: 'images/[name].[hash:8].[ext]',
         pattern: /\.(png|jpg|jpeg|webp|svg)$/
+    })
+    .copyFiles({
+        from: 'assets/js/models',
+        to: 'js/[name].[hash:8].[ext]',
+        pattern: /\.(js|json)$/
+    })
+
+    .addAliases({
+        // MODULES
+        '@Models': path.resolve(__dirname, 'assets/js/models'),
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

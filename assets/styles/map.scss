@@ -1,13 +1,53 @@
 .map {
   &-shadow {
+    transition: filter 1.5s;
     filter: drop-shadow(5px 5px 5px #5d7382);
+
+    &:hover {
+      filter: drop-shadow(9px 9px 9px #7a8e9b);
+    }
   }
-  .label {
+
+  &-color {
+    transition: filter 1.5s, transform 1.5s;
+
+    &:hover {
+      filter: sepia(0.3);
+      transform: scale(1.01);
+    }
+  }
+
+  &-image {
+    transition: filter 1.5s;
+    &:hover {
+    }
+  }
+
+  &-label {
+    transition: opacity 1s, transform 1.5s;
+    opacity: 0.7;
+    position: absolute;
     background: aliceblue;
-    border-radius: 0.25rem;
+    border-radius: 0.25rem 0.25rem 0 0;
     display: flex;
     align-items: center;
     padding: 0.25rem 0.5rem;
+    border-top: 1px solid #495b65;
+    border-left: 1px solid #495b65;
+    border-right: 1px solid #495b65;
+    border-bottom: 1px solid #a5b2b9;
+
+    &:hover {
+      transform: scale(1.6)!important;
+      opacity: 1!important;
+      filter: drop-shadow(3px 3px 3px #495b65);
+    }
+  }
+
+  [data-map]:hover .map-label {
+    opacity: 0.85;
+    transform: scale(1.25);
+    cursor: pointer;
   }
 }
 
