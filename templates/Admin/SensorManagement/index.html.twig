@@ -1,0 +1,39 @@
+{% extends 'Admin/base.html.twig' %}
+{% block title %}{{ app_name }} - {{ 'ui.sensor.label'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="d-flex gap-4">
+            <h1>{{ 'ui.sensor.list'|trans }}</h1>
+            <button class="btn btn-success mb-2">
+                <a href="{{ path('admin_web_sensor_create') }}">
+                    {{ 'ui.buttons.add'|trans }}
+                </a>
+            </button>
+        </div>
+        <hr>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">{{ 'ui.sensor.name'|trans }}</th>
+                <th scope="col">{{ 'ui.sensor.city'|trans }}</th>
+                <th scope="col">{{ 'ui.sensor.address'|trans }}</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sensor in sensors %}
+                <tr>
+                    <th scope="row">{{ sensor.name }}</th>
+                    <td>{{ sensor.city.name }}</td>
+                    <td>{{ sensor.address }}</td>
+                    <td>
+                        <a href="{{ path('admin_web_sensor_show', {id: sensor.id}) }}">
+                            <button class="btn btn-sm btn-secondary float-end">{{ 'ui.buttons.show'|trans }}</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

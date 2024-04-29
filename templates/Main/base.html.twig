@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{{ app_name }}{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="shortcut icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon">
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="d-flex flex-column" style="min-height: 100vh;">
+            <!-- Top Navigation -->
+            {% include 'Main/nav.html.twig' %}
+
+            <!-- Top Navigation -->
+            {% for message in app.flashes('message') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            <!-- Body -->
+            {% block body %}
+            {% endblock %}
+
+            <!-- Footer -->
+            {% include 'Main/footer.html.twig' %}
+    </body>
+</html>

@@ -1,0 +1,4 @@
+admin_web_index:
+  path: /admin
+  methods: [ GET ]
+  controller: App\UI\Web\Controller\User\AdminController::index

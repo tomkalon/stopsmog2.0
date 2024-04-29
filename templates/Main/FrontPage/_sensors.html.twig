@@ -1,0 +1,32 @@
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th scope="col">{{ 'ui.frontpage.activity'|trans }}</th>
+        <th scope="col">{{ 'ui.frontpage.city'|trans }}</th>
+        <th scope="col">{{ 'ui.frontpage.place'|trans }}</th>
+        <th scope="col" class="text-center">{{ 'ui.frontpage.pm10'|trans }}</th>
+        <th scope="col" class="text-center">{{ 'ui.frontpage.reading_time'|trans }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sensor in sensorList %}
+        <tr>
+            <td>
+                {% if sensor.measurements[0].createdAt|date('Y-m-d H:i:s') < "now"|date_modify("-3 hour")|date("Y-m-d H:i:s", "Europe/Warsaw") %}
+                    <img src="{{ asset('assets/images/active-ff75012d4de326f7a01f0f86369fea02.svg') }}" height="15" alt="Active">
+                {% else %}
+                    <img src="{{ asset('assets/images/inactive-474c931fd2bcbf993e6d93c5ee59d0ef.svg') }}" height="15" alt="Inactive">
+                {% endif %}
+
+            </td>
+            <td>{{ sensor.city.name }}</td>
+            <td>{{ sensor.name }}</td>
+            <td class="fw-bolder justify-content-center d-flex align-items-center gap-1">
+                {% include 'Main/FrontPage/__measurement_pm10value_color.html.twig' %}
+                {{ sensor.measurements[0].pm10 }} <small class="fw-normal text-xs">µg/m<sup>3</sup></small>
+            </td>
+            <td class="text-center">{{ sensor.measurements[0].createdAt|date('Y-m-d - H:i:s') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

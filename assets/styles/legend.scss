@@ -1,0 +1,60 @@
+/* legend */
+.legend {
+  background: #5d7382;
+  border-top: 2px solid #e4e9ef;
+  border-bottom: 2px solid #e4e9ef;
+  color: #fff;
+  padding: 10px 0 20px;
+}
+
+.legend h2,
+.legend h4 {
+  text-shadow: -1px 1px 1px #062032;
+  text-align: center;
+}
+
+.legend span.text {
+  font-size: 18px;
+  text-align: justify;
+  text-shadow: -1px 1px 1px #374854;
+  display: block;
+}
+
+.legend .table .range span,
+.legend .table .description span,
+.legend .table .color span {
+  display: block;
+  padding: 7px 5px;
+  margin: 7px 0;
+  font-size: 18px;
+  color: #4f6573;
+  box-shadow: -10px 10px 15px 0px #3a4852;
+  border-radius: 3px;
+}
+
+.legend .table .range span {
+  background: #edf1f7;
+  font-weight: bold;
+}
+
+.legend .table .description span {
+  background: linear-gradient(45deg, #8798a4, #edf1f7 25%);
+}
+
+.legend .table .description span svg {
+  background: #5d7382;
+  border-radius: 50%;
+  border: 2px solid #8888884d;
+  font-size: 28px;
+  color: #fff;
+  float: right;
+  margin-right: 5px;
+}
+
+.legend .table .color span {
+  color: #fff;
+}
+
+.legend hr {
+  background: #fff;
+}

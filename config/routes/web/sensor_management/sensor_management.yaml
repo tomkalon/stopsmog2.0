@@ -1,0 +1,19 @@
+admin_web_sensor_index:
+  path: /admin/sensor
+  methods: [ GET ]
+  controller: App\UI\Web\Controller\SensorManagement\SensorManagementController::index
+
+admin_web_sensor_show:
+  path: /admin/sensor/show/{id<\d+>}
+  methods: [ GET ]
+  controller: App\UI\Web\Controller\SensorManagement\SensorManagementController::show
+  
+admin_web_sensor_create:
+  path: /admin/sensor/create
+  methods: [ GET, POST ]
+  controller: App\UI\Web\Controller\SensorManagement\SensorManagementController::create
+  
+admin_web_sensor_update:
+  path: /admin/sensor/update/{id<\d+>}
+  methods: [ GET, POST ]
+  controller: App\UI\Web\Controller\SensorManagement\SensorManagementController::update

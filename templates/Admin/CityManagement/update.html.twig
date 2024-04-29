@@ -1,0 +1,23 @@
+{% extends 'Admin/base.html.twig' %}
+{% block title %}{{ app_name }} - {{ 'ui.city.label'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <h1>{{ 'ui.city.show'|trans }}</h1>
+        <hr>
+        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+            {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            <div class="d-flex gap-2">
+                <button class="btn btn-danger mb-3" type="button">
+                    <a href="{{ path('admin_web_city_index') }}">{{ 'ui.buttons.return'|trans }}</a>
+                </button>
+                {{ form_row(form.submit, {
+                    'label': 'ui.buttons.update'|trans
+                }) }}
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

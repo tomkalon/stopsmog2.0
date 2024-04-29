@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                    https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Entity\City" table="city" repository-class="App\Infrastructure\Repository\CityRepository">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1" />
+        </id>
+
+        <field name="name" />
+        <one-to-many field="sensors" target-entity="Sensor" mapped-by="city" orphan-removal="true" />
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="onPrePersist" />
+            <lifecycle-callback type="preUpdate" method="onPreUpdate" />
+        </lifecycle-callbacks>
+
+        <field name="createdAt" type="datetime_immutable" />
+        <field name="updatedAt" type="datetime_immutable" />
+    </entity>
+</doctrine-mapping>

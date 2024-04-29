@@ -1,0 +1,55 @@
+ui:
+  nav:
+    cities: Miasta
+    sensors: Czujniki
+    logout: Wyloguj się
+  buttons:
+    add: Dodaj
+    show: Pokaż
+    edit: Edytuj
+    update: Aktualizuj
+    remove: Usuń
+    return: Wróć
+    close: Zamknij
+  modal:
+    confirm_remove:
+      label: Usuwanie
+      desc: Czy chcesz usunąć wskazany element?
+  user:
+    admin:
+      label: Panel Administratora
+      content: Witaj w panelu administratora!
+    login:
+      label: Logowanie
+      login: Zaloguj się
+    email: Adres email
+    password: Hasło
+    remember_me: Zapamiętaj mnie
+  sensor:
+    label: Zarządzanie czujnikami
+    list: Lista czujników
+    create: Dodawanie nowego czujnika
+    show: Szczegóły czujnika
+    name: Nazwa
+    city: Miejscowość
+    address: Adres
+  city:
+    label: Zarządzanie miejscowościami
+    list: Lista miejscowości
+    show: Szczegóły miejscowości
+    create: Dodawanie nowej miejscowości
+    name: Nazwa miejscowości
+    count: Ilość czujników
+    
+  flash:
+    remove:
+      successful: Element został pomyślnie usunięty.
+    
+  frontpage:
+    title: Tabela odczytów
+    sensors_list: Lista czujników
+    city: Miejscowość
+    place: Lokalizacja
+    pm10: Wartość PM10
+    reading_time: Czas odczytu
+    activity: +
