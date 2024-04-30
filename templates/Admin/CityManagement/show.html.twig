@@ -2,25 +2,29 @@
 {% block title %}{{ app_name }} - {{ 'ui.city.label'|trans }}{% endblock %}
 
 {% block body %}
-    <div class="container mt-3">
-        <h1>{{ 'ui.city.show'|trans }}</h1>
-        <hr>
-        <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-            <h2>{{ city.name }}</h2>
-            <h3>{{ 'ui.city.count'|trans }}: {{ city.sensors|length }}</h3>
-            <div class="pt-4">
-                <a href="{{ path('admin_web_city_update', {id:city.id}) }}">
-                    <button class="btn btn-warning" type="button">
-                        {{ 'ui.buttons.edit'|trans }}
+    <div {{ stimulus_controller('city-management--city-management-show') }}>
+        <div class="container mt-3">
+            <h1>{{ 'ui.city.show'|trans }}</h1>
+            <hr>
+            <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+                <h2>{{ city.name }}</h2>
+                <h3>{{ 'ui.city.count'|trans }}: {{ city.sensors|length }}</h3>
+                <div class="pt-4">
+                    <a href="{{ path('admin_web_city_update', {id:city.id}) }}">
+                        <button class="btn btn-warning" type="button">
+                            {{ 'ui.buttons.edit'|trans }}
+                        </button>
+                    </a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm_delete">
+                        {{ 'ui.buttons.remove'|trans }}
                     </button>
-                </a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm_delete">
-                    {{ 'ui.buttons.remove'|trans }}
-                </button>
+                </div>
             </div>
         </div>
+        {{ include('Admin/Common/confirm_delete.html.twig', {
+            id: city.id,
+            route: '/api/cities/',
+            onSuccessRoute: path('admin_web_city_index')
+        }) }}
     </div>
-    {{ include('Admin/Common/confirm_delete.html.twig', {
-        id: city.id
-    }) }}
 {% endblock %}
