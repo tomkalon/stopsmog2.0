@@ -10,44 +10,73 @@
 
   &-color {
     transition: filter 1.5s, transform 1.5s;
+    filter: sepia(0.15);
 
     &:hover {
-      filter: sepia(0.3);
-      transform: scale(1.01);
+      filter: sepia(0.35);
+      transform: scale(1.02);
     }
   }
 
   &-image {
     transition: filter 1.5s;
+  }
+
+  &-label-container {
+    transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s;
+    transform: scale(1);
     &:hover {
+      transform: scale(1.6)!important;
     }
+  }
+
+  [data-map]:hover .map-label-container {
+    cursor: pointer;
+    transform: scale(1.2);
   }
 
   &-label {
-    transition: opacity 1s, transform 1.5s;
-    opacity: 0.7;
-    position: absolute;
-    background: aliceblue;
-    border-radius: 0.25rem 0.25rem 0 0;
+    transition: background-color 1.5s, color 1.5s;
+    background: #154859;
+    color: #ffffff;
+    border-radius: 0.25rem 0.25rem;
     display: flex;
     align-items: center;
-    padding: 0.25rem 0.5rem;
+    font-size: 13px;
+    padding: 0.15rem 0.35rem;
     border-top: 1px solid #495b65;
     border-left: 1px solid #495b65;
     border-right: 1px solid #495b65;
-    border-bottom: 1px solid #a5b2b9;
+    border-bottom: 1px solid #495b65;
+    filter: drop-shadow(4px 3px 0px #000000);
 
     &:hover {
-      transform: scale(1.6)!important;
-      opacity: 1!important;
-      filter: drop-shadow(3px 3px 3px #495b65);
     }
   }
 
-  [data-map]:hover .map-label {
-    opacity: 0.85;
-    transform: scale(1.25);
-    cursor: pointer;
+  .map-label-container:hover .map-label {
+    color: #062731;
+    background: #eefff8;
+  }
+
+  &-marker{
+    transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s, margin-top 1.5s;
+    background: #22720b;
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.15rem 0.35rem;
+    border-left: 1px solid #154859;
+    border-right: 1px solid #154859;
+    border-bottom: 1px solid #154859;
+    border-bottom: 1px solid #154859;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    filter: drop-shadow(3px 3px 1px #000000bb);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
   }
 }
 
