@@ -49,6 +49,7 @@ ui:
     title: Tabela odczytów
     sensors_list: Lista czujników
     city: Miejscowość
+    address: Adres
     place: Lokalizacja
     pm10: Wartość PM10
     reading_time: Czas odczytu

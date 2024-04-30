@@ -1,9 +1,10 @@
 <table class="table table-striped table-hover">
     <thead>
     <tr>
-        <th scope="col">{{ 'ui.frontpage.activity'|trans }}</th>
+        <th scope="col"><i class="fa fa-power-off" aria-hidden="true"></i></th>
         <th scope="col">{{ 'ui.frontpage.city'|trans }}</th>
         <th scope="col">{{ 'ui.frontpage.place'|trans }}</th>
+        <th scope="col">{{ 'ui.frontpage.address'|trans }}</th>
         <th scope="col" class="text-center">{{ 'ui.frontpage.pm10'|trans }}</th>
         <th scope="col" class="text-center">{{ 'ui.frontpage.reading_time'|trans }}</th>
     </tr>
@@ -21,6 +22,7 @@
             </td>
             <td>{{ sensor.city.name }}</td>
             <td>{{ sensor.name }}</td>
+            <td>{{ sensor.address }}</td>
             <td>
                 <div class="fw-bolder justify-content-center d-flex align-items-center gap-1">
                     {% include 'Main/FrontPage/__measurement_pm10value_color.html.twig' %}

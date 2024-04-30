@@ -2490,6 +2490,11 @@ follow-redirects@^1.0.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
 
+fontawesome-4.7@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/fontawesome-4.7/-/fontawesome-4.7-4.7.0.tgz#985d66d225180600d78f5808f149ecbfeabcc11c"
+  integrity sha512-K+pJ9tR3Z+youCvMOtqwJyyM69dlAQflrahXTV3KExWTAFHqR+MgeEC/dF3Q7nUNOJRMOX8GIPzzGbnh4GMrkw==
+
 forwarded@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.2.0.tgz#2269936428aad4c15c7ebe9779a84bf0b2a81811"
