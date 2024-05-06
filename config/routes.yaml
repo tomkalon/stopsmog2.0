@@ -1,2 +1,5 @@
 main_web:
-  resource: 'routes/web/routes.yaml'
+  resource: 'routes/main/routes.yaml'
+  
+admin_web:
+  resource: 'routes/admin/routes.yaml'

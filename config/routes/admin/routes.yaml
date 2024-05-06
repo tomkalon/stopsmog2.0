@@ -1,0 +1,11 @@
+user_routes:
+  resource: 'user'
+  type: directory
+
+sensor_management_routes:
+  resource: 'sensor'
+  type: directory
+
+city_management_routes:
+  resource: 'city'
+  type: directory

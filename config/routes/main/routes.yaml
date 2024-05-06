@@ -1,0 +1,11 @@
+frontpage_routes:
+  resource: 'frontpage'
+  type: directory
+
+sensor_routes:
+  resource: 'sensor'
+  type: directory
+
+city_routes:
+  resource: 'city'
+  type: directory
