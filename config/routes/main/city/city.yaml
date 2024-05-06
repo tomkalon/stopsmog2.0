@@ -1,4 +1,4 @@
-web_city_show:
+main_city_show:
   path: /city/{id<\d+>}
   methods: [ GET ]
   controller: App\UI\Web\Controller\City\CityController::show
