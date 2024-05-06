@@ -18,4 +18,4 @@ api_platform:
   keep_legacy_inflector: false
   mapping:
     paths:
-      - '%kernel.project_dir%/config/api_platform'
+      - '%kernel.project_dir%/config/api_platform/resources'
