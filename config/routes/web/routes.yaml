@@ -10,6 +10,14 @@ sensor_management_routes:
   resource: 'sensor_management'
   type: directory
 
+sensor_routes:
+  resource: 'sensor'
+  type: directory
+
+city:
+  resource: 'city'
+  type: directory
+
 city_management_routes:
   resource: 'city_management'
   type: directory

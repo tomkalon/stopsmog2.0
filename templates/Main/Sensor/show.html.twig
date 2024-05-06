@@ -1,0 +1,9 @@
+{% extends 'Main/base.html.twig' %}
+{% block title %}{{ app_name }}{% endblock %}
+
+{% block body %}
+    <div  class="container flex-grow-1 my-3">
+        <h2 class="my-4">{{ 'ui.sensor.show'|trans }}</h2>
+    </div>
+    {% include 'Main/FrontPage/_legend.html.twig' %}
+{% endblock %}

@@ -3,6 +3,7 @@ ui:
     cities: Miasta
     sensors: Czujniki
     logout: Wyloguj się
+    
   buttons:
     add: Dodaj
     show: Pokaż
@@ -11,10 +12,12 @@ ui:
     remove: Usuń
     return: Wróć
     close: Zamknij
+    
   modal:
     confirm_remove:
       label: Usuwanie
       desc: Czy chcesz usunąć wskazany element?
+      
   user:
     admin:
       label: Panel Administratora
@@ -25,6 +28,7 @@ ui:
     email: Adres email
     password: Hasło
     remember_me: Zapamiętaj mnie
+    
   sensor:
     label: Zarządzanie czujnikami
     list: Lista czujników
@@ -33,6 +37,7 @@ ui:
     name: Nazwa
     city: Miejscowość
     address: Adres
+    
   city:
     label: Zarządzanie miejscowościami
     list: Lista miejscowości
