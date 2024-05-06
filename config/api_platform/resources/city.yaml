@@ -1,0 +1,12 @@
+resources:
+  App\Domain\Entity\City:
+    shortName: 'City'
+    description: 'City where sensors are mounted'
+    operations:
+      ApiPlatform\Metadata\GetCollection:
+        method: GET
+      ApiPlatform\Metadata\Get:
+        method: GET
+      ApiPlatform\Metadata\Delete:
+        method: DELETE
+        security: 'is_granted("ROLE_ADMIN")'

@@ -1,0 +1,12 @@
+resources:
+  App\Domain\Entity\Measurement:
+    shortName: 'Measurement'
+    description: 'Sensor readings'
+    operations:
+      ApiPlatform\Metadata\GetCollection:
+        method: GET
+      ApiPlatform\Metadata\Get:
+        method: GET
+      ApiPlatform\Metadata\Post:
+        method: POST
+

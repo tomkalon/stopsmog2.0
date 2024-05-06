@@ -13,7 +13,11 @@
                 <button type="button" class="btn btn-secondary"
                         data-bs-dismiss="modal">{{ 'ui.buttons.close'|trans }}
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button"
+                        class="btn btn-primary"
+                        data-delete-on-success="{{ onSuccessRoute }}"
+                        data-delete-path="{{ route }}"
+                        data-delete-id="{{ id }}">
                     {{ 'ui.buttons.remove'|trans }}
                 </button>
             </div>

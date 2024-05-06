@@ -1,0 +1,12 @@
+resources:
+  App\Domain\Entity\Sensor:
+    shortName: 'Sensor'
+    description: 'Sensors mounted in specific places'
+    operations:
+      ApiPlatform\Metadata\GetCollection:
+        method: GET
+      ApiPlatform\Metadata\Get:
+        method: GET
+      ApiPlatform\Metadata\Delete:
+        method: DELETE
+        security: 'is_granted("ROLE_ADMIN")'

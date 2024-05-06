@@ -34,8 +34,11 @@ Encore
     })
 
     .addAliases({
-        // MODULES
+        // MODELS
         '@Models': path.resolve(__dirname, 'assets/js/models'),
+
+        // MODULES
+        '@Api': path.resolve(__dirname, 'assets/js/modules/Api'),
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
