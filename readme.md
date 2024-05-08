@@ -12,6 +12,8 @@ A simple application for monitoring air purity.
 Project is created with:
 * PHP 8.3
 * Symfony 7.0
+* Composer PHP
+* NODE ^20
 * Stimulus JS
 * MySQL / MariaDB
 * Bootstrap
