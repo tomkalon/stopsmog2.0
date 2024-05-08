@@ -8,6 +8,7 @@
         <discriminator-map>
             <discriminator-mapping value="sensor" class="FileSensor" />
             <discriminator-mapping value="city" class="FileCity" />
+            <discriminator-mapping value="settings" class="FileSettings" />
         </discriminator-map>
 
         <id name="id" column="id" type="integer">
