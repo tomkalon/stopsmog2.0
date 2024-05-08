@@ -6,7 +6,7 @@
 * [Setup](#setup)
 
 ## General info
-A simple application for cataloging and searching for graves in graveyards made for parishes.
+A simple application for monitoring air purity.
 
 ## Technologies
 Project is created with:
