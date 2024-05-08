@@ -3,20 +3,20 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\Sensor" table="sensor" repository-class="App\Infrastructure\Repository\SensorRepository">
+    <entity name="App\Domain\Entity\File" inheritance-type="JOINED">
+        <discriminator-column name="entity" type="string" />
+        <discriminator-map>
+            <discriminator-mapping value="sensor" class="FileSensor" />
+            <discriminator-mapping value="city" class="FileCity" />
+            <discriminator-mapping value="settings" class="FileSettings" />
+        </discriminator-map>
+
         <id name="id" column="id" type="integer">
             <sequence-generator sequence-name="tablename_seq" allocation-size="100" />
         </id>
 
         <field name="name" />
-        <many-to-one field="city" inversed-by="sensors" target-entity="City">
-            <cascade>
-                <cascade-persist/>
-            </cascade>
-            <join-column name="city_id" referenced-column-name="id" on-delete="CASCADE" />
-        </many-to-one>
-        <field name="address" />
-        <one-to-many field="measurements" target-entity="Measurement" mapped-by="sensor" orphan-removal="true" />
+        <field name="extension" />
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="onPrePersist" />

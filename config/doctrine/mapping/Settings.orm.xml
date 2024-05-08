@@ -3,20 +3,12 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\Sensor" table="sensor" repository-class="App\Infrastructure\Repository\SensorRepository">
-        <id name="id" column="id" type="integer">
-            <sequence-generator sequence-name="tablename_seq" allocation-size="100" />
+    <entity name="App\Domain\Entity\Settings" table="settings" repository-class="App\Infrastructure\Repository\SettingsRepository">
+        <id name="id" column="id" type="string">
+            <generator strategy="NONE"/>
         </id>
 
-        <field name="name" />
-        <many-to-one field="city" inversed-by="sensors" target-entity="City">
-            <cascade>
-                <cascade-persist/>
-            </cascade>
-            <join-column name="city_id" referenced-column-name="id" on-delete="CASCADE" />
-        </many-to-one>
-        <field name="address" />
-        <one-to-many field="measurements" target-entity="Measurement" mapped-by="sensor" orphan-removal="true" />
+        <one-to-one field="map_image" target-entity="FileSettings" inversed-by="settings_image" />
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="onPrePersist" />

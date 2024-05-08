@@ -2,6 +2,7 @@ ui:
   nav:
     cities: Miasta
     sensors: Czujniki
+    settings: Ustawienia
     logout: Wyloguj się
     
   buttons:
@@ -18,6 +19,9 @@ ui:
       label: Usuwanie
       desc: Czy chcesz usunąć wskazany element?
       
+  settings:
+    label: Ustawienia
+    
   user:
     admin:
       label: Panel Administratora
@@ -46,7 +50,8 @@ ui:
     create: Dodawanie nowej miejscowości
     name: Nazwa miejscowości
     count: Ilość czujników
-    
+    empty: Brak elementów do wyświetlenia.
+  
   flash:
     remove:
       successful: Element został pomyślnie usunięty.
@@ -60,3 +65,4 @@ ui:
     pm10: Wartość PM10
     reading_time: Czas odczytu
     activity: +
+    empty: Brak elementów do wyświetlenia.
