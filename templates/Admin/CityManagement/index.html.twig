@@ -12,6 +12,7 @@
             </button>
         </div>
         <hr>
+        {% if cities|length %}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -33,5 +34,8 @@
                 </tr>
             {% endfor %}
         </table>
+        {% else %}
+            <h3>{{ 'ui.city.empty'|trans }}</h3>
+        {% endif %}
     </div>
 {% endblock %}

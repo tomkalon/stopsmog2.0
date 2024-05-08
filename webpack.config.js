@@ -32,6 +32,11 @@ Encore
         to: 'js/[name].[hash:8].[ext]',
         pattern: /\.(js|json)$/
     })
+    .copyFiles({
+        from: 'assets/js/bootstrap',
+        to: 'js/[name].[hash:8].[ext]',
+        pattern: /\.(js|json)$/
+    })
 
     .addAliases({
         // MODELS

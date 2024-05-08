@@ -9,3 +9,7 @@ sensor_management_routes:
 city_management_routes:
   resource: 'city'
   type: directory
+  
+settings_routes:
+  resource: 'settings'
+  type: directory
