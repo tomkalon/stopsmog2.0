@@ -4,15 +4,15 @@ namespace App\Domain\Entity;
 
 class FileSettings extends File
 {
-    private ?Settings $map_image;
+    private ?Settings $settings_image;
 
-    public function getMapImage(): ?Settings
+    public function getSettingsImage(): ?Settings
     {
-        return $this->map_image;
+        return $this->settings_image;
     }
 
-    public function setMapImage(?Settings $map_image): void
+    public function setSettingsImage(?Settings $settings_image): void
     {
-        $this->map_image = $map_image;
+        $this->settings_image = $settings_image;
     }
 }

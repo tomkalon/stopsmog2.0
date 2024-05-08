@@ -4,6 +4,7 @@
 {% block body %}
     <div {{ stimulus_controller('frontpage--frontpage') }} class="container flex-grow-1 my-3">
         <h2 class="my-4">{{ 'ui.frontpage.title'|trans }}</h2>
+        <hr>
         <div>
             {% include 'Main/FrontPage/_sensors.html.twig' %}
         </div>
