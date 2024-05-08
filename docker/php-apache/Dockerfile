@@ -41,5 +41,7 @@ RUN apt-get install mc -y
 RUN echo "composer install" >> ~/.bash_history
 RUN echo "composer update" >> ~/.bash_history
 RUN echo "symfony console" >> ~/.bash_history
+RUN echo "symfony console fos:js-routing:dump --format=json --target=public/js/routes.json" >> ~/.bash_history
 RUN echo "bin/console doctrine:migrations:diff" >> ~/.bash_history
 RUN echo "bin/console doctrine:migrations:migrate" >> ~/.bash_history
+RUN echo "bin/console app:admin:add" >> ~/.bash_history

@@ -12,6 +12,7 @@
             </button>
         </div>
         <hr>
+        {% if sensors|length %}
         <table class="table table-striped">
             <thead>
             <tr>
@@ -35,5 +36,8 @@
                 </tr>
             {% endfor %}
         </table>
+        {% else %}
+            <h3>{{ 'ui.sensor.empty'|trans }}</h3>
+        {% endif %}
     </div>
 {% endblock %}

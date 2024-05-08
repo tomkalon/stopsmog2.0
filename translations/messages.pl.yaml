@@ -37,6 +37,7 @@ ui:
     name: Nazwa
     city: Miejscowość
     address: Adres
+    empty: Brak elementów do wyświetlenia.
     
   city:
     label: Zarządzanie miejscowościami

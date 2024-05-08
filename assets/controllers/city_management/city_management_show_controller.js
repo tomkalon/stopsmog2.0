@@ -1,5 +1,7 @@
 import {Controller} from '@hotwired/stimulus';
 import Api from '@Api'
+import Routing from '@Routing'
+import $ from 'jquery'
 
 export default class extends Controller {
 
@@ -11,8 +13,11 @@ export default class extends Controller {
             const id = deleteBtn.getAttribute('data-delete-id')
             const path = deleteBtn.getAttribute('data-delete-path')
             const onSuccess = deleteBtn.getAttribute('data-delete-on-success')
-            Api.remove(path, id);
-            window.location.href = onSuccess
+            Api.remove(path, {
+                id: id
+            });
+            $(confirmDelete).fadeOut(1000)
+            window.location.href = Routing.generate(onSuccess)
         });
     }
 }

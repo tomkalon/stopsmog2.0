@@ -39,6 +39,9 @@ Encore
 
         // MODULES
         '@Api': path.resolve(__dirname, 'assets/js/modules/Api'),
+        '@Routing': path.resolve(__dirname, 'assets/js/modules/Routing'),
+        '@Routes': path.resolve(__dirname, 'public/js/routes.json'),
+        '@FosRoutes': path.resolve(__dirname, 'vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js')
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
