@@ -2,14 +2,10 @@ user_routes:
   resource: 'user'
   type: directory
 
-frontpage_routes:
-  resource: 'frontpage'
-  type: directory
-
 sensor_management_routes:
-  resource: 'sensor_management'
+  resource: 'sensor'
   type: directory
 
 city_management_routes:
-  resource: 'city_management'
+  resource: 'city'
   type: directory

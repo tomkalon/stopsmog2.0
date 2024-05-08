@@ -28,6 +28,8 @@ services:
       - '../src/DependencyInjection/'
       - '../src/Entity/'
       - '../src/Kernel.php'
+      
+  App\Domain\Service\ApiPlatform\SingularPathSegmentNameGenerator: ~
   
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 import cities from '@Models/cities'
+import Api from "@Api";
 
 export default class extends Controller {
 
@@ -7,8 +8,6 @@ export default class extends Controller {
 
     connect() {
         if (this.hasMapTarget) {
-
-
             const map = this.mapTarget
             cities['cities'].forEach((element) => {
                 map.append(this.addMapLabel(element['name'], element['x'], element['y']))

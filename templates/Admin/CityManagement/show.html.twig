@@ -23,8 +23,8 @@
         </div>
         {{ include('Admin/Common/confirm_delete.html.twig', {
             id: city.id,
-            route: '/api/cities/',
-            onSuccessRoute: path('admin_web_city_index')
+            route: 'api_city_delete',
+            onSuccessRoute: 'admin_web_city_index'
         }) }}
     </div>
 {% endblock %}

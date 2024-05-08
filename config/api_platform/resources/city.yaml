@@ -4,9 +4,16 @@ resources:
     description: 'City where sensors are mounted'
     operations:
       ApiPlatform\Metadata\GetCollection:
+        name: 'api_cities_get'
         method: GET
+        options:
+          expose: true
       ApiPlatform\Metadata\Get:
+        name: 'api_city_get'
         method: GET
+        options:
+          expose: true
       ApiPlatform\Metadata\Delete:
+        name: 'api_city_delete'
         method: DELETE
         security: 'is_granted("ROLE_ADMIN")'

@@ -23,8 +23,8 @@
         </div>
         {{ include('Admin/Common/confirm_delete.html.twig', {
             id: sensor.id,
-            route: '/api/sensors/',
-            onSuccessRoute: path('admin_web_sensor_index')
+            route: 'api_sensor_delete',
+            onSuccessRoute: 'admin_web_sensor_index'
         }) }}
     </div>
 {% endblock %}

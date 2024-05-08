@@ -2,6 +2,8 @@ admin_web_sensor_index:
   path: /admin/sensor
   methods: [ GET ]
   controller: App\UI\Web\Controller\SensorManagement\SensorManagementController::index
+  options:
+    expose: true
 
 admin_web_sensor_show:
   path: /admin/sensor/show/{id<\d+>}

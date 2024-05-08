@@ -1,3 +1,4 @@
+import Routing from '@Routing'
 import $ from "jquery";
 
 function post(path, params, callback = null, options = null)
@@ -27,7 +28,7 @@ function apiHandler(method, path, params, callback = null, options = null)
 {
     $.ajax({
         method: method,
-        url: path + params,
+        url: Routing.generate(path, params),
         data: {params}
     })
         .done(function (data) {

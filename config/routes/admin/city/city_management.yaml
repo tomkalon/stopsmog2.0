@@ -2,6 +2,8 @@ admin_web_city_index:
   path: /admin/city
   methods: [ GET ]
   controller: App\UI\Web\Controller\CityManagement\CityManagementController::index
+  options:
+    expose: true
 
 admin_web_city_show:
   path: /admin/city/show/{id<\d+>}
@@ -17,4 +19,3 @@ admin_web_city_update:
   path: /admin/city/update/{id<\d+>}
   methods: [ GET, POST ]
   controller: App\UI\Web\Controller\CityManagement\CityManagementController::update
-

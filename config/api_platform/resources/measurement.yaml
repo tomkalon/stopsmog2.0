@@ -4,9 +4,14 @@ resources:
     description: 'Sensor readings'
     operations:
       ApiPlatform\Metadata\GetCollection:
+        name: 'api_measurements_get'
         method: GET
+        options:
+          expose: true
       ApiPlatform\Metadata\Get:
+        name: 'api_measurement_get'
         method: GET
       ApiPlatform\Metadata\Post:
+        name: 'api_measurements_post'
         method: POST
 
