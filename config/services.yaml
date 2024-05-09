@@ -31,7 +31,7 @@ services:
       - '../src/Entity/'
       - '../src/Kernel.php'
       
-  App\Application\Service\File\Settings\SettingsMapImageUploadService:
+  App\Application\Service\File\ImageUploadService:
     arguments:
       $targetDirectory: '%app.path.images%'
       $defaultImgExtension: '%app.path.images%'
