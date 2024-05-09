@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Web\Controller\CityManagement;
+namespace App\UI\Controller\CityManagement;
 
 use App\Application\Command\City\CityCommand;
 use App\Application\Service\CQRS\Command\CommandBusInterface;

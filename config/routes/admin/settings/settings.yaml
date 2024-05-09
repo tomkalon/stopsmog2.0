@@ -1,4 +1,4 @@
 admin_web_settings_index:
   path: /admin/settings
   methods: [ GET ]
-  controller: App\UI\Web\Controller\Settings\SettingsController::edit
+  controller: App\UI\Controller\Settings\SettingsController::edit

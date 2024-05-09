@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Web\Controller\Sensor;
+namespace App\UI\Controller\Sensor;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

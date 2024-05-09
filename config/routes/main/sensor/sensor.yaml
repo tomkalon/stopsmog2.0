@@ -1,4 +1,4 @@
 main_sensor_show:
   path: /sensor/{id<\d+>}
   methods: [ GET ]
-  controller: App\UI\Web\Controller\Sensor\SensorController::show
+  controller: App\UI\Controller\Sensor\SensorController::show

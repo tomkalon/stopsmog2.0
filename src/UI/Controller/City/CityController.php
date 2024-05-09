@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Web\Controller\City;
+namespace App\UI\Controller\City;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

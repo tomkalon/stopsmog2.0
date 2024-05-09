@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Web\Controller\SensorManagement;
+namespace App\UI\Controller\SensorManagement;
 
 use App\Application\Command\Sensor\SensorCommand;
 use App\Application\Service\CQRS\Command\CommandBusInterface;

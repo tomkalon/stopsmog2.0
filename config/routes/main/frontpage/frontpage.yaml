@@ -1,6 +1,6 @@
 main_index:
   path: /
   methods: [ GET ]
-  controller: App\UI\Web\Controller\FrontPage\FrontPageController::index
+  controller: App\UI\Controller\FrontPage\FrontPageController::index
   defaults:
     page: 1

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UI\Web\Controller\FrontPage;
+namespace App\UI\Controller\FrontPage;
 
 use App\Infrastructure\Query\Sensor\GetSensorListInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
