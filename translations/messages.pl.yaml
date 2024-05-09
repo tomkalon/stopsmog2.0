@@ -21,7 +21,7 @@ ui:
       
   settings:
     label: Ustawienia
-    map_image: Zdjęcie miejscowości
+    mapImage: Mapa monitorowanego obszaru
     
   user:
     admin:

@@ -8,7 +8,7 @@
             <generator strategy="NONE"/>
         </id>
 
-        <one-to-one field="map_image" target-entity="FileSettings" inversed-by="settings_image" />
+        <one-to-one field="mapImage" target-entity="FileSettings" inversed-by="settings_image" />
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="onPrePersist" />

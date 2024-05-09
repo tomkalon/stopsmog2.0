@@ -12,7 +12,7 @@ class Settings
     use LifecycleTrait;
 
     private string $id = 'settings';
-    private ?FileSettings $map_image = null;
+    private ?FileSettings $mapImage = null;
 
     public function getId(): string
     {
@@ -21,11 +21,11 @@ class Settings
 
     public function getMapImage(): ?FileSettings
     {
-        return $this->map_image;
+        return $this->mapImage;
     }
 
-    public function setMapImage(?FileSettings $map_image): void
+    public function setMapImage(?FileSettings $mapImage): void
     {
-        $this->map_image = $map_image;
+        $this->mapImage = $mapImage;
     }
 }

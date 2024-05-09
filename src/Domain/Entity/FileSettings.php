@@ -4,15 +4,15 @@ namespace App\Domain\Entity;
 
 class FileSettings extends File
 {
-    private ?Settings $settings_image;
+    private ?Settings $settings;
 
-    public function getSettingsImage(): ?Settings
+    public function getSettings(): ?Settings
     {
-        return $this->settings_image;
+        return $this->settings;
     }
 
-    public function setSettingsImage(?Settings $settings_image): void
+    public function setSettings(?Settings $settings): void
     {
-        $this->settings_image = $settings_image;
+        $this->settings = $settings;
     }
 }

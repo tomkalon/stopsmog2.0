@@ -26,7 +26,7 @@ class SettingsController extends AbstractController
         if ($form->isSubmitted() and $form->isValid()) {
             /** @var SettingsView $settingsData */
             $settingsData = $form->getData();
-            $mapImage = $form->get('map_image')->getData();
+            $mapImage = $form->get('mapImage')->getData();
             $commandBus->dispatch(new SettingsCommand($settingsData, $mapImage));
             return $this->redirectToRoute('admin_web_settings_edit');
         }
