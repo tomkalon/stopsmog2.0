@@ -22,7 +22,7 @@
             </div>
             <div class="col-6">
                 {% if settings.mapImage %}
-                    <img src="" alt="" class="settings-map-image-thumb">
+                    <img src="{{ file_directory ~ settings.getMapImageFilename }}" alt="" class="settings-map-image-thumb">
                 {% else %}
                     <img src="{{ asset('build/images/no-image.webp') }}" class="settings-map-image-thumb" alt="no image">
                 {% endif %}

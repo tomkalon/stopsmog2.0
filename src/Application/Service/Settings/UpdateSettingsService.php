@@ -2,7 +2,8 @@
 
 namespace App\Application\Service\Settings;
 
-use App\Domain\Entity\FileSettings;
+use App\Domain\Entity\File;
+use App\Domain\Entity\Settings;
 use App\Domain\Enum\FileExtensionEnum;
 use App\Domain\Repository\SettingsRepositoryInterface;
 use App\Domain\ValueObject\File\FileVo;
@@ -18,16 +19,17 @@ readonly class UpdateSettingsService implements UpdateSettingsInterface
     }
     public function persist(SettingsView $settingsView, ?FileVo $fileVo = null)
     {
+        /** @var Settings $settings */
         $settings = $this->settingsRepository->find('settings');
 
         if ($fileVo) {
-            $image = new FileSettings();
-            $image->setSettings($settings);
+            $image = new File();
             $image->setName($fileVo->getName());
             $image->setExtension(FileExtensionEnum::tryFrom($fileVo->getExtension()));
             $this->em->persist($image);
             $settings->setMapImage($image);
         }
         $this->em->persist($settings);
+        $this->em->flush();
     }
 }

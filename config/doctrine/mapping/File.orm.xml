@@ -3,14 +3,7 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                     https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="App\Domain\Entity\File" inheritance-type="JOINED">
-        <discriminator-column name="entity" type="string" />
-        <discriminator-map>
-            <discriminator-mapping value="sensor" class="FileSensor" />
-            <discriminator-mapping value="city" class="FileCity" />
-            <discriminator-mapping value="settings" class="FileSettings" />
-        </discriminator-map>
-
+    <entity name="App\Domain\Entity\File" table="file" repository-class="App\Infrastructure\Repository\FileRepository">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
             <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1" />

@@ -4,7 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-  app.path.images: '%kernel.project_dir%/public/uploads'
+  app.path.images: '%kernel.project_dir%/public/%env(APP_FILES_DIRECTORY)%'
   app.default.image.extension: '%env(APP_DEFAULT_IMG_EXTENSION)%'
 
 services:
@@ -35,6 +35,10 @@ services:
     arguments:
       $targetDirectory: '%app.path.images%'
       $defaultImgExtension: '%app.path.images%'
+      
+  App\Infrastructure\CLI\CreateUploadDirectoryCommand:
+    arguments:
+      $targetDirectory: '%app.path.images%'
   
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones

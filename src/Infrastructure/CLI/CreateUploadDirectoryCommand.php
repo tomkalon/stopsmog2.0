@@ -14,6 +14,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CreateUploadDirectoryCommand extends Command
 {
     public function __construct(
+        private readonly string $targetDirectory
     )
     {
         parent::__construct();
@@ -29,7 +30,7 @@ class CreateUploadDirectoryCommand extends Command
     {
         $flag = false;
 
-        $uploadsDir = 'public/uploads/';
+        $uploadsDir = $this->targetDirectory . '/';
 
         if (!file_exists($uploadsDir)) {
             mkdir($uploadsDir, 0755, true);
