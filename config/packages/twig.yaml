@@ -3,6 +3,7 @@ twig:
   file_name_pattern: '*.twig'
   globals:
     app_name: '%env(resolve:APP_NAME)%'
+    file_directory: '/%env(resolve:APP_FILES_DIRECTORY)%/'
 
 when@test:
   twig:

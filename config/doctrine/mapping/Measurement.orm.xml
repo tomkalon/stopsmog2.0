@@ -5,7 +5,8 @@
                     https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="App\Domain\Entity\Measurement" table="measurement" repository-class="App\Infrastructure\Repository\MeasurementRepository">
         <id name="id" column="id" type="integer">
-            <sequence-generator sequence-name="tablename_seq" allocation-size="100" />
+            <generator strategy="AUTO"/>
+            <sequence-generator sequence-name="tablename_seq" allocation-size="100" initial-value="1" />
         </id>
 
         <field name="pm10" type="integer" nullable="true" />

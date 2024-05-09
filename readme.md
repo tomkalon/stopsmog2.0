@@ -60,6 +60,12 @@ symfony console d:m:m
 ```
 
 ### 6) To run project initialization and make new administrator account, run:
+Create admin account and init settings record in DB proper table.
+```
+symfony console app:project:init
+```
+
+To add admin account:
 ```
 symfony console app:admin:add
 ```

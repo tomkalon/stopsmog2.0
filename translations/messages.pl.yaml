@@ -21,6 +21,7 @@ ui:
       
   settings:
     label: Ustawienia
+    mapImage: Mapa monitorowanego obszaru
     
   user:
     admin:

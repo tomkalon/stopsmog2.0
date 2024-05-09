@@ -2,15 +2,15 @@
 
 namespace App\Domain\View\Settings;
 
-use App\Domain\Entity\FileSettings;
+use App\Domain\Entity\File;
 use App\Domain\Entity\Settings;
 
 class SettingsView
 {
-    private ?FileSettings $mapImage;
+    private ?File $mapImage;
 
     public function __construct(
-        ?FileSettings $mapImage = null
+        ?File $mapImage = null
     )
     {
         $this->mapImage = $mapImage;
@@ -23,13 +23,18 @@ class SettingsView
         );
     }
 
-    public function getMapImage(): ?FileSettings
+    public function getMapImage(): ?File
     {
         return $this->mapImage;
     }
 
-    public function setMapImage(?FileSettings $mapImage): void
+    public function setMapImage(?File $mapImage): void
     {
         $this->mapImage = $mapImage;
+    }
+
+    public function getMapImageFilename(): ?string
+    {
+        return $this->mapImage->getFilename();
     }
 }
