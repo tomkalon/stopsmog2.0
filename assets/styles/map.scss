@@ -80,3 +80,11 @@
   }
 }
 
+.settings {
+  &-map-image {
+    &-thumb {
+      max-height: 800px;
+      max-width: 100%;
+    }
+  }
+}

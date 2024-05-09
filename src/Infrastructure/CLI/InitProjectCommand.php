@@ -30,9 +30,11 @@ class InitProjectCommand extends Command
         $createSettingsRecord = $application->find('app:settings:add');
         $createSettingsRecord->run($input, $output);
 
+        $createUploadDirectory = $application->find('app:upload-directory:add');
+        $createUploadDirectory->run($input, $output);
+
         $createAdmin = $application->find('app:admin:add');
         $createAdmin->run($input, $output);
-
 
         $output->writeln('Initialization completed successfully.');
         return Command::SUCCESS;

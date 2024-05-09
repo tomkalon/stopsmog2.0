@@ -21,6 +21,7 @@ ui:
       
   settings:
     label: Ustawienia
+    map_image: Zdjęcie miejscowości
     
   user:
     admin:
