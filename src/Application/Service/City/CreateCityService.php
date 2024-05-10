@@ -11,6 +11,8 @@ readonly class CreateCityService extends PersistCityAbstractService
     {
         $city = new City();
         $city->setName($cityView->getName());
+        $city->setPositionX($cityView->getPositionX());
+        $city->setPositionY($cityView->getPositionY());
         $this->persist($city);
     }
 }

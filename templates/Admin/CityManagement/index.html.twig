@@ -4,36 +4,36 @@
 {% block body %}
     <div class="container mt-3">
         <div class="d-flex gap-4">
-            <h1>{{ 'ui.city.list'|trans }}</h1>
-            <button class="btn btn-success mb-2">
-                <a href="{{ path('admin_web_city_create') }}">
+            <h1 class="mb-0">{{ 'ui.city.list'|trans }}</h1>
+            <a href="{{ path('admin_web_city_create') }}" class="d-flex align-items-center">
+                <button class="btn btn-success">
                     {{ 'ui.buttons.add'|trans }}
-                </a>
-            </button>
+                </button>
+            </a>
         </div>
         <hr>
         {% if cities|length %}
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">{{ 'ui.city.name'|trans }}</th>
-                <th scope="col">{{ 'ui.city.count'|trans }}</th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for city in cities %}
+            <table class="table table-striped">
+                <thead>
                 <tr>
-                    <th scope="row">{{ city.name }}</th>
-                    <td>{{ city.sensors|length }}</td>
-                    <td>
-                        <a href="{{ path('admin_web_city_show', {id: city.id}) }}">
-                            <button class="btn btn-sm btn-secondary float-end">{{ 'ui.buttons.show'|trans }}</button>
-                        </a>
-                    </td>
+                    <th scope="col">{{ 'ui.city.name'|trans }}</th>
+                    <th scope="col">{{ 'ui.city.count'|trans }}</th>
+                    <th scope="col"></th>
                 </tr>
-            {% endfor %}
-        </table>
+                </thead>
+                <tbody>
+                {% for city in cities %}
+                    <tr>
+                        <th scope="row">{{ city.name }}</th>
+                        <td>{{ city.sensors|length }}</td>
+                        <td>
+                            <a href="{{ path('admin_web_city_show', {id: city.id}) }}">
+                                <button class="btn btn-sm btn-secondary float-end">{{ 'ui.buttons.show'|trans }}</button>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
         {% else %}
             <h3>{{ 'ui.city.empty'|trans }}</h3>
         {% endif %}

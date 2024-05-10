@@ -52,6 +52,8 @@ ui:
     name: Nazwa miejscowości
     count: Ilość czujników
     empty: Brak elementów do wyświetlenia.
+    positionX: Współrzędne X
+    positionY: Współrzędne Y
   
   flash:
     remove:

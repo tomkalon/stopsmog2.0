@@ -1,6 +1,7 @@
-import { Controller } from '@hotwired/stimulus';
+import {Controller} from '@hotwired/stimulus';
 import cities from '@Models/cities'
 import Api from "@Api";
+import Routing from "@Routing";
 
 export default class extends Controller {
 
@@ -8,27 +9,35 @@ export default class extends Controller {
 
     connect() {
         if (this.hasMapTarget) {
-            const map = this.mapTarget
-            cities['cities'].forEach((element) => {
-                map.append(this.addMapLabel(element['name'], element['x'], element['y']))
-            })
+            Api.get(
+                'api_cities_get',
+                [],
+                this.citiesHandler.bind(this)
+            )
         }
     }
 
-    addMapLabel(name, x, y)
-    {
+    citiesHandler(data, params, options) {
+        const map = this.mapTarget
+        let cities = data['hydra:member']
+        cities.forEach((city) => {
+            map.append(this.addMapLabel(city))
+        })
+    }
+
+    addMapLabel(city) {
         const div = document.createElement('div')
         div.setAttribute('class', 'map-label-container position-absolute d-flex align-items-center justify-content-center')
-        div.style.left = `${x}px`
-        div.style.top = `${y}px`
+        div.style.left = `${city['positionX']}px`
+        div.style.top = `${city['positionY']}px`
 
         const label = document.createElement('div')
         label.setAttribute('class', 'map-label')
-        label.innerHTML = name
+        label.innerHTML = city['name']
 
         const marker = document.createElement('div')
         marker.setAttribute('class', 'map-marker')
-        marker.innerHTML = '2'
+        marker.innerHTML = city['sensors'].length
 
         div.appendChild(label)
         div.appendChild(marker)

@@ -10,6 +10,8 @@
         </id>
 
         <field name="name" />
+        <field name="positionX" type="integer" />
+        <field name="positionY" type="integer" />
         <one-to-many field="sensors" target-entity="Sensor" mapped-by="city" orphan-removal="true" />
 
         <lifecycle-callbacks>

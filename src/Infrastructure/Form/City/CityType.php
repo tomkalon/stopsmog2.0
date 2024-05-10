@@ -3,7 +3,9 @@
 namespace App\Infrastructure\Form\City;
 
 use App\Domain\View\City\CityView;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +20,16 @@ class CityType extends AbstractType
             ->add('name', TextType::class, [
                 'constraints' => [
                     new Length(['min' => 3]),
+                ]
+            ])
+            ->add('positionX', IntegerType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' => 4]),
+                ]
+            ])
+            ->add('positionY', IntegerType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' => 4]),
                 ]
             ])
             ->add('submit', SubmitType::class, [
