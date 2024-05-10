@@ -26,20 +26,37 @@ function remove(path, params, callback = null, options = null)
 
 function apiHandler(method, path, params, callback = null, options = null)
 {
-    $.ajax({
-        method: method,
-        url: Routing.generate(path, params),
-        data: {params}
-    })
-        .done(function (data) {
-            if (callback) {
-                callback(data, params, options);
-            }
+    if (options && options['router'] === false) {
+        $.ajax({
+            method: method,
+            url: path,
+            data: {params}
         })
-        .fail(function () {
-            alert("error");
+            .done(function (data) {
+                if (callback) {
+                    callback(data, params, options);
+                }
+            })
+            .fail(function () {
+                alert("error");
+            })
+        ;
+    } else {
+        $.ajax({
+            method: method,
+            url: Routing.generate(path, params),
+            data: {params}
         })
-    ;
+            .done(function (data) {
+                if (callback) {
+                    callback(data, params, options);
+                }
+            })
+            .fail(function () {
+                alert("error");
+            })
+        ;
+    }
 }
 
 

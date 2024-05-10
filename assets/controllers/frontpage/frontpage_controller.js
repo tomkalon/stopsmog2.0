@@ -1,5 +1,4 @@
 import {Controller} from '@hotwired/stimulus';
-import cities from '@Models/cities'
 import Api from "@Api";
 import Routing from "@Routing";
 
@@ -27,6 +26,7 @@ export default class extends Controller {
 
     addMapLabel(city) {
         const div = document.createElement('div')
+        div.setAttribute('data-city-id', city.id)
         div.setAttribute('class', 'map-label-container position-absolute d-flex align-items-center justify-content-center')
         div.style.left = `${city['positionX']}px`
         div.style.top = `${city['positionY']}px`
@@ -35,13 +35,32 @@ export default class extends Controller {
         label.setAttribute('class', 'map-label')
         label.innerHTML = city['name']
 
-        const marker = document.createElement('div')
-        marker.setAttribute('class', 'map-marker')
-        marker.innerHTML = city['sensors'].length
+        Api.get(
+            'api_sensors_get',
+            {city: city.id},
+            this.addSensorData.bind(this),
+            {city: city, label: div}
+        )
 
         div.appendChild(label)
-        div.appendChild(marker)
-
         return div
+    }
+
+    addSensorData(data, params, options) {
+        const sensors = data['hydra:member']
+        const city = options['city']
+        const label = options['label']
+
+        sensors.forEach((sensor) => {
+            console.log(sensor)
+        })
+
+        const marker = document.createElement('div')
+        marker.setAttribute('class', 'map-marker')
+
+        marker.classList.add('green')
+        marker.innerHTML = city['sensors'].length
+
+        label.appendChild(marker)
     }
 }

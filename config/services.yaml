@@ -39,6 +39,12 @@ services:
   App\Infrastructure\CLI\CreateUploadDirectoryCommand:
     arguments:
       $targetDirectory: '%app.path.images%'
-  
-  # add more service definitions when explicit configuration is needed
-  # please note that last definitions always *replace* previous ones
+      
+  ### API PLATFORM
+  sensors.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments: [ { city: 'exact' } ]
+    tags: [ 'api_platform.filter' ]
+    autowire: false
+    autoconfigure: false
+    public: false

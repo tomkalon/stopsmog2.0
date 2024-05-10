@@ -7,6 +7,7 @@ resources:
       ApiPlatform\Metadata\GetCollection:
         name: 'api_sensors_get'
         method: GET
+        filters: ['sensors.search_filter']
         options:
           expose: true
       ApiPlatform\Metadata\Get:
