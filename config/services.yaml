@@ -39,12 +39,6 @@ services:
   App\Infrastructure\CLI\CreateUploadDirectoryCommand:
     arguments:
       $targetDirectory: '%app.path.images%'
-      
-  ### API PLATFORM
-  sensors.search_filter:
-    parent: 'api_platform.doctrine.orm.search_filter'
-    arguments: [ { city: 'exact' } ]
-    tags: [ 'api_platform.filter' ]
-    autowire: false
-    autoconfigure: false
-    public: false
+
+imports:
+  - { resource: api_platform/filters.yaml }

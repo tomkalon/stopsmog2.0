@@ -51,8 +51,21 @@ export default class extends Controller {
         const city = options['city']
         const label = options['label']
 
+        const now = new Date()
+        now.setHours(now.getHours() - 1.5)
+
         sensors.forEach((sensor) => {
             console.log(sensor)
+            Api.get(
+                'api_measurements_get',
+                {
+                    sensor: sensor.id,
+                    createdAt: {
+                        after: now.toISOString()
+                    }
+                },
+                (data) => console.log(data)
+            )
         })
 
         const marker = document.createElement('div')

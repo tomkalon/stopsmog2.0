@@ -1,5 +1,7 @@
 App\Domain\Entity\Sensor:
   attributes:
+    id:
+      groups: ['sensor.read']
     name:
       groups: ['sensor.read']
     city:
@@ -7,4 +9,3 @@ App\Domain\Entity\Sensor:
     address:
       groups: [ 'sensor.read' ]
     measurements:
-      groups: [ 'sensor.read' ]

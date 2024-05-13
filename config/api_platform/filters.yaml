@@ -1,0 +1,16 @@
+### API PLATFORM
+services:
+  sensors.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments: [ { city: 'exact' } ]
+    tags: [ 'api_platform.filter' ]
+  
+  measurements.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments: [ { sensor: 'exact' } ]
+    tags: [ 'api_platform.filter' ]
+    
+  measurements.date_filter:
+    parent: 'api_platform.doctrine.orm.date_filter'
+    arguments: [ { createdAt: 'after' } ]
+    tags: [ 'api_platform.filter' ]
