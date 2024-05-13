@@ -8,16 +8,22 @@ class CityView
 {
     private ?int $id;
     private ?string $name;
+    private ?int $positionX;
+    private ?int $positionY;
     private array $sensors;
 
 
     public function __construct(
         ?int $id = null,
         ?string $name = null,
+        ?int $positionX = null,
+        ?int $positionY = null,
         array $sensors = []
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->positionX = $positionX;
+        $this->positionY = $positionY;
         $this->sensors = $sensors;
     }
 
@@ -26,6 +32,8 @@ class CityView
         return new self(
             $city->getId(),
             $city->getName(),
+            $city->getPositionX(),
+            $city->getPositionY(),
             $city->getSensors()->toArray()
         );
     }
@@ -48,6 +56,26 @@ class CityView
     public function setName(?string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getPositionX(): ?int
+    {
+        return $this->positionX;
+    }
+
+    public function setPositionX(?int $positionX): void
+    {
+        $this->positionX = $positionX;
+    }
+
+    public function getPositionY(): ?int
+    {
+        return $this->positionY;
+    }
+
+    public function setPositionY(?int $positionY): void
+    {
+        $this->positionY = $positionY;
     }
 
     public function getSensors(): array

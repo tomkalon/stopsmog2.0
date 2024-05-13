@@ -1,3 +1,4 @@
+
 resources:
   App\Domain\Entity\Measurement:
     shortName: 'Measurement'
@@ -6,6 +7,7 @@ resources:
       ApiPlatform\Metadata\GetCollection:
         name: 'api_measurements_get'
         method: GET
+        filters: [ 'measurements.search_filter', 'measurements.date_filter' ]
         options:
           expose: true
       ApiPlatform\Metadata\Get:
@@ -15,3 +17,11 @@ resources:
         name: 'api_measurements_post'
         method: POST
 
+properties:
+  App\Domain\Entity\Measurement:
+    pm10:
+      description: 'Measured value of Particulate Matter PM10'
+    pm25:
+      description: 'Measured value of Particulate Matter PM2.5'
+    sensor:
+      description: 'Measurement sensor'

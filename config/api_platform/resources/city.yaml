@@ -19,3 +19,12 @@ resources:
         options:
           expose: true
         security: 'is_granted("ROLE_ADMIN")'
+
+properties:
+  App\Domain\Entity\City:
+    name:
+      description: 'Measured value of Particulate Matter PM10'
+    positionX:
+      description: 'Horizontal position on the map'
+    positionY:
+      description: 'Vertical position on the map'

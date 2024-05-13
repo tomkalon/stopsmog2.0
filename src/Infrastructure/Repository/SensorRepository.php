@@ -22,6 +22,15 @@ class SensorRepository extends ServiceEntityRepository implements SensorReposito
             ->addSelect('city')
             ->leftJoin('s.city', 'city');
 
+        if (!$filter) {
+            $qb
+                ->addSelect('measurements')
+                ->leftJoin('s.measurements',
+                    'measurements',
+                    'WITH',
+                    'measurements.id = (SELECT MAX(m.id) FROM App\Domain\Entity\Measurement m WHERE m.sensor = measurements.sensor)');
+        }
+
         return $qb->getQuery()->getResult();
     }
 }

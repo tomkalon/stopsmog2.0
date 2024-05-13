@@ -1,6 +1,6 @@
-import { Controller } from '@hotwired/stimulus';
-import cities from '@Models/cities'
+import {Controller} from '@hotwired/stimulus';
 import Api from "@Api";
+import Routing from "@Routing";
 
 export default class extends Controller {
 
@@ -8,31 +8,72 @@ export default class extends Controller {
 
     connect() {
         if (this.hasMapTarget) {
-            const map = this.mapTarget
-            cities['cities'].forEach((element) => {
-                map.append(this.addMapLabel(element['name'], element['x'], element['y']))
-            })
+            Api.get(
+                'api_cities_get',
+                [],
+                this.citiesHandler.bind(this)
+            )
         }
     }
 
-    addMapLabel(name, x, y)
-    {
+    citiesHandler(data, params, options) {
+        const map = this.mapTarget
+        let cities = data['hydra:member']
+        cities.forEach((city) => {
+            map.append(this.addMapLabel(city))
+        })
+    }
+
+    addMapLabel(city) {
         const div = document.createElement('div')
+        div.setAttribute('data-city-id', city.id)
         div.setAttribute('class', 'map-label-container position-absolute d-flex align-items-center justify-content-center')
-        div.style.left = `${x}px`
-        div.style.top = `${y}px`
+        div.style.left = `${city['positionX']}px`
+        div.style.top = `${city['positionY']}px`
 
         const label = document.createElement('div')
         label.setAttribute('class', 'map-label')
-        label.innerHTML = name
+        label.innerHTML = city['name']
+
+        Api.get(
+            'api_sensors_get',
+            {city: city.id},
+            this.addSensorData.bind(this),
+            {city: city, label: div}
+        )
+
+        div.appendChild(label)
+        return div
+    }
+
+    addSensorData(data, params, options) {
+        const sensors = data['hydra:member']
+        const city = options['city']
+        const label = options['label']
+
+        const now = new Date()
+        now.setHours(now.getHours() - 1.5)
+
+        sensors.forEach((sensor) => {
+            console.log(sensor)
+            Api.get(
+                'api_measurements_get',
+                {
+                    sensor: sensor.id,
+                    createdAt: {
+                        after: now.toISOString()
+                    }
+                },
+                (data) => console.log(data)
+            )
+        })
 
         const marker = document.createElement('div')
         marker.setAttribute('class', 'map-marker')
-        marker.innerHTML = '2'
 
-        div.appendChild(label)
-        div.appendChild(marker)
+        marker.classList.add('green')
+        marker.innerHTML = city['sensors'].length
 
-        return div
+        label.appendChild(marker)
     }
 }

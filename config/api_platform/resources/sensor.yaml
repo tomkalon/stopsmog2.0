@@ -2,11 +2,15 @@ resources:
   App\Domain\Entity\Sensor:
     shortName: 'Sensor'
     description: 'Sensors mounted in specific places'
-    
+    normalizationContext:
+      groups: [ 'sensor.read' ]
+    denormalizationContext:
+      groups: [ 'sensor.write' ]
     operations:
       ApiPlatform\Metadata\GetCollection:
         name: 'api_sensors_get'
         method: GET
+        filters: [ 'sensors.search_filter' ]
         options:
           expose: true
       ApiPlatform\Metadata\Get:
@@ -20,3 +24,14 @@ resources:
         options:
           expose: true
         security: 'is_granted("ROLE_ADMIN")'
+
+properties:
+  App\Domain\Entity\Sensor:
+    name:
+      description: 'The name of the Sensor'
+    city:
+      description: 'The city of the Sensor'
+    address:
+      description: 'The address of the Sensor'
+    measurements:
+      description: 'The measurements collection of the Sensor'

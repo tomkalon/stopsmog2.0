@@ -1,0 +1,11 @@
+App\Domain\Entity\Sensor:
+  attributes:
+    id:
+      groups: ['sensor.read']
+    name:
+      groups: ['sensor.read']
+    city:
+      groups: [ 'sensor.read' ]
+    address:
+      groups: [ 'sensor.read' ]
+    measurements:
