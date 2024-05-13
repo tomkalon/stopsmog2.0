@@ -12,7 +12,11 @@
             <div {{ stimulus_target('frontpage--frontpage', 'map') }} data-map class="position-relative my-5">
                 <div class="map-shadow position-relative top-0 z-0">
                     <div class="map-color">
-                        <img class="map-image cursor-pointer" src="{{ file_directory ~ settings.getMapImageFilename }}" height="800" alt="Map">
+                        {% if settings.mapImage != null %}
+                            <img class="map-image cursor-pointer" src="{{ file_directory ~ settings.getMapImageFilename }}" height="800" alt="Map">
+                        {% else %}
+                            <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" height="800" alt="Map">
+                        {% endif %}
                     </div>
                 </div>
             </div>

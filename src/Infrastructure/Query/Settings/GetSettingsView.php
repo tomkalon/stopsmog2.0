@@ -16,6 +16,10 @@ readonly class GetSettingsView implements GetSettingsViewInterface
     public function execute(): SettingsView
     {
         $settings = $this->settingsRepository->find('settings');
-        return SettingsView::fromEntity($settings);
+        if ($settings) {
+            return SettingsView::fromEntity($settings);
+        } else {
+            return new SettingsView();
+        }
     }
 }

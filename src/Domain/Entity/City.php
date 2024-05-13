@@ -12,8 +12,8 @@ class City
     use LifecycleTrait;
 
     private string $name;
-    private int $positionX;
-    private int $positionY;
+    private int $positionX = 0;
+    private int $positionY = 0;
     private Collection $sensors;
 
 
