@@ -9,20 +9,20 @@ class SensorView
 {
     private ?int $id;
     private ?string $name;
-    private ?City $city;
+    private ?string $cityName;
     private ?string $address;
     private ?array $measurements;
 
     public function __construct(
         ?int $id = null,
         ?string $name = null,
-        ?City $city = null,
+        ?string $cityName = null,
         ?string $address = null,
         ?array $measurements = null
     ) {
         $this->id = $id;
         $this->name = $name;
-        $this->city = $city;
+        $this->cityName = $cityName;
         $this->address = $address;
         $this->measurements = $measurements;
     }
@@ -32,7 +32,7 @@ class SensorView
         return new self(
             $sensor->getId(),
             $sensor->getName(),
-            $sensor->getCity(),
+            $sensor->getCity()->getName(),
             $sensor->getAddress(),
             null
         );
@@ -58,14 +58,14 @@ class SensorView
         $this->name = $name;
     }
 
-    public function getCity(): ?City
+    public function getCityName(): ?string
     {
-        return $this->city;
+        return $this->cityName;
     }
 
-    public function setCity(?City $city): void
+    public function setCityName(?string $cityName): void
     {
-        $this->city = $city;
+        $this->cityName = $cityName;
     }
 
     public function getAddress(): ?string

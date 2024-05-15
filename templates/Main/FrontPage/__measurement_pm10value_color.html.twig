@@ -1,13 +1,13 @@
-{% if sensor.measurements[0].pm10 > 0 and sensor.measurements[0].pm10 <= 20 %}
+{% if sensor.measurements|first.pm10 > 0 and sensor.measurements|first.pm10 <= 20 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #50d08b, #00b050 50%);"></div>
-{% elseif sensor.measurements[0].pm10 > 20 and sensor.measurements[0].pm10 <= 50 %}
+{% elseif sensor.measurements|first.pm10 > 20 and sensor.measurements|first.pm10 <= 50 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #ffff90, #ffff00 50%);"></div>
-{% elseif sensor.measurements[0].pm10 > 50 and sensor.measurements[0].pm10 <= 80 %}
+{% elseif sensor.measurements|first.pm10 > 50 and sensor.measurements|first.pm10 <= 80 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #fad35d, #ffc000 50%);"></div>
-{% elseif sensor.measurements[0].pm10 > 80 and sensor.measurements[0].pm10 <= 110 %}
+{% elseif sensor.measurements|first.pm10 > 80 and sensor.measurements|first.pm10 <= 110 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #ff7070, #ff0000 50%);"></div>
-{% elseif sensor.measurements[0].pm10 > 110 and sensor.measurements[0].pm10 <= 150 %}
+{% elseif sensor.measurements|first.pm10 > 110 and sensor.measurements|first.pm10 <= 150 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #cf4f4f, #aa1e1e 50%);"></div>
-{% elseif sensor.measurements[0].pm10 > 150 %}
+{% elseif sensor.measurements|first.pm10 > 150 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #ae22ae, #8c008c 50%);"></div>
 {% endif %}

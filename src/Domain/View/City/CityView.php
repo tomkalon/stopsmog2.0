@@ -12,13 +12,12 @@ class CityView
     private ?int $positionY;
     private array $sensors;
 
-
     public function __construct(
         ?int $id = null,
         ?string $name = null,
         ?int $positionX = null,
         ?int $positionY = null,
-        array $sensors = []
+        array $sensors = [],
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -34,7 +33,7 @@ class CityView
             $city->getName(),
             $city->getPositionX(),
             $city->getPositionY(),
-            $city->getSensors()->toArray()
+            $city->getSensors()->toArray(),
         );
     }
 

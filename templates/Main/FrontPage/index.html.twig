@@ -2,6 +2,7 @@
 {% block title %}{{ app_name }}{% endblock %}
 
 {% block body %}
+    {% set referenceTime = "now"|date_modify("-1 hour")|date_modify("-30 minute")|date("Y-m-d H:i:s", "Europe/Warsaw") %}
     <div {{ stimulus_controller('frontpage--frontpage') }} class="container flex-grow-1 my-3">
         <h2 class="my-4">{{ 'ui.frontpage.title'|trans }}</h2>
         <hr>
@@ -19,6 +20,15 @@
                         {% endif %}
                     </div>
                 </div>
+                {% for city in cityList %}
+                    <a href="{{ path('main_city_show', {id: city.id}) }}">
+                        <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
+                             style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
+                            <div class="map-label">{{ city.name }}</div>
+                            {% include 'Main/FrontPage/__measurement_pm10value_label_color.html.twig' %}
+                        </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>

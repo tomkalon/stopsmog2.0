@@ -19,7 +19,12 @@ class CityRepository extends ServiceEntityRepository implements CityRepositoryIn
         $qb = $this->createQueryBuilder('c');
         $qb
             ->addSelect('sensors')
-            ->leftJoin('c.sensors', 'sensors');
+            ->leftJoin('c.sensors', 'sensors')
+            ->addSelect('measurements')
+            ->leftJoin('sensors.measurements',
+                'measurements',
+                'WITH',
+                'measurements.id = (SELECT MAX(m.id) FROM App\Domain\Entity\Measurement m WHERE m.sensor = measurements.sensor)');
 
         return $qb->getQuery()->getResult();
     }

@@ -7,13 +7,13 @@ export default class extends Controller {
     static targets = ['map']
 
     connect() {
-        if (this.hasMapTarget) {
-            Api.get(
-                'api_cities_get',
-                [],
-                this.citiesHandler.bind(this)
-            )
-        }
+        // if (this.hasMapTarget) {
+        //     Api.get(
+        //         'api_cities_get',
+        //         [],
+        //         this.citiesHandler.bind(this)
+        //     )
+        // }
     }
 
     citiesHandler(data, params, options) {
