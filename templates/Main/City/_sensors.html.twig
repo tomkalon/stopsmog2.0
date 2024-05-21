@@ -3,7 +3,6 @@
         <thead>
         <tr>
             <th scope="col"><i class="fa fa-power-off" aria-hidden="true"></i></th>
-            <th scope="col">{{ 'ui.frontpage.city'|trans }}</th>
             <th scope="col">{{ 'ui.frontpage.place'|trans }}</th>
             <th scope="col">{{ 'ui.frontpage.address'|trans }}</th>
             <th scope="col" class="text-center">{{ 'ui.frontpage.pm10'|trans }}</th>
@@ -20,7 +19,6 @@
                         <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
                     {% endif %}
                 </td>
-                <td>{{ sensor.city.name }}</td>
                 <td>{{ sensor.name }}</td>
                 <td>{{ sensor.address }}</td>
                 <td>
@@ -39,6 +37,6 @@
         </tbody>
     </table>
 {% else %}
-    <h3>{{ 'ui.frontpage.empty'|trans }}</h3>
+    <p class="text-center">{{ 'ui.frontpage.empty'|trans }}</p>
 {% endif %}
 

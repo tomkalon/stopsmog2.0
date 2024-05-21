@@ -5,6 +5,7 @@ namespace App\Infrastructure\Form\City;
 use App\Domain\View\City\CityView;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,6 +22,10 @@ class CityType extends AbstractType
                 'constraints' => [
                     new Length(['min' => 3]),
                 ]
+            ])
+            ->add('map', FileType::class, [
+                'mapped' => false,
+                'required' => false,
             ])
             ->add('positionX', IntegerType::class, [
                 'constraints' => [

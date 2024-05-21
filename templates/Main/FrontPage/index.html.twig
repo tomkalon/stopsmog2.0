@@ -6,30 +6,30 @@
     <div class="container flex-grow-1 my-3">
         <h2 class="my-4">{{ 'ui.frontpage.title'|trans }}</h2>
         <hr>
-        <div>
+        <div class="overflow-x-auto">
             {% include 'Main/FrontPage/_sensors.html.twig' %}
         </div>
-        <div class="map d-flex justify-content-center overflow-x-auto">
-            <div data-map class="position-relative my-5">
-                <div class="map-shadow position-relative top-0 z-0">
-                    <div class="map-color">
-                        {% if settings.mapImage != null %}
-                            <img class="map-image cursor-pointer" src="{{ file_directory ~ settings.getMapImageFilename }}" height="800" alt="Map">
-                        {% else %}
-                            <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" height="800" alt="Map">
-                        {% endif %}
-                    </div>
+    </div>
+    <div class="map d-flex justify-content-center">
+        <div data-map class="map-container position-relative my-5">
+            <div class="map-shadow position-relative top-0 z-0">
+                <div class="map-color">
+                    {% if settings.mapImage != null %}
+                        <img class="map-image cursor-pointer" src="{{ file_directory ~ settings.getMapImageFilename }}" alt="Map">
+                    {% else %}
+                        <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" alt="Map">
+                    {% endif %}
                 </div>
-                {% for city in cityList %}
-                    <a href="{{ path('main_city_show', {id: city.id}) }}">
-                        <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
-                             style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
-                            <div class="map-label">{{ city.name }}</div>
-                            {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
-                        </div>
-                    </a>
-                {% endfor %}
             </div>
+            {% for city in cityList %}
+                <a href="{{ path('main_city_show', {id: city.id}) }}">
+                    <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
+                         style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
+                        <div class="map-label">{{ city.name }}</div>
+                        {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     </div>
     {% include 'Main/FrontPage/_legend.html.twig' %}

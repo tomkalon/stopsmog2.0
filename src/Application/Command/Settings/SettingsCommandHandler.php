@@ -19,11 +19,11 @@ readonly class SettingsCommandHandler implements CommandHandlerInterface
     public function __invoke(SettingsCommand $command)
     {
         $settingsView = $command->getSettingsView();
-        $mapImage = $command->getMapImage();
+        $uploadedFile = $settingsView->getUploadedFile();
 
         $mapImageVO = null;
-        if ($mapImage) {
-            $mapImageVO = $this->imageUpload->upload($mapImage, FileExtensionEnum::WEBP);
+        if ($uploadedFile) {
+            $mapImageVO = $this->imageUpload->upload($uploadedFile, FileExtensionEnum::WEBP);
         }
 
         $this->updateSettings->persist($settingsView, $mapImageVO);

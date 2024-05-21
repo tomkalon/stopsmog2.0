@@ -57,6 +57,7 @@ ui:
     positionY: Współrzędne Y
     sensors:
       empty: Brak przypisanych czujników
+    map: Mapa miejscowości
   
   flash:
     remove:

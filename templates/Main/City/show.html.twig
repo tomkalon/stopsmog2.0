@@ -4,19 +4,22 @@
 {% block body %}
     {% set referenceTime = "now"|date_modify("-1 hour")|date_modify("-30 minute")|date("Y-m-d H:i:s", "Europe/Warsaw") %}
     <div  class="container flex-grow-1 my-3">
-        <h2 class="my-4">{{ 'ui.city.show'|trans }}</h2>
+        <h2 class="my-4 text-center">{{ 'ui.city.show'|trans }}</h2>
         <hr>
-        <h3>{{ city.name }}</h3>
-        {%  include 'Main/City/_sensors.html.twig' %}
-        <div class="map d-flex justify-content-center overflow-x-auto">
+        <h3 class="text-center">{{ city.name }}</h3>
+        <hr>
+        <div class="overflow-x-auto">
+            {%  include 'Main/City/_sensors.html.twig' %}
+        </div>
+        <div class="map d-flex justify-content-center">
             <div data-map class="position-relative my-5">
                 <div class="map-shadow position-relative top-0 z-0">
                     <div class="map-color">
                         {% if city.map != null %}
-                            <img class="map-image cursor-pointer" src="{{ file_directory ~ city.getMap }}" height="800" alt="Map">
+                            <img class="map-image cursor-pointer" src="{{ file_directory ~ city.getMap.getFilename }}" alt="Map">
                         {% else %}
                             <p class="text-center"><small>{{ 'ui.settings.mapEmpty'|trans }}</small></p>
-                            <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" height="800" alt="Map">
+                            <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" alt="Map">
                         {% endif %}
                     </div>
                 </div>

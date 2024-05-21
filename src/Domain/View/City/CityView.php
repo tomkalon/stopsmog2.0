@@ -4,6 +4,8 @@ namespace App\Domain\View\City;
 
 use App\Domain\Entity\City;
 use App\Domain\Entity\File;
+use App\Domain\ValueObject\File\FileVo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CityView
 {
@@ -13,7 +15,8 @@ class CityView
     private ?int $positionY;
     private array $sensors;
     private ?File $map;
-
+    private FileVo $fileVo;
+    private ?UploadedFile $uploadedFile;
 
     public function __construct(
         ?int $id = null,
@@ -101,5 +104,25 @@ class CityView
     public function setMap(?File $map): void
     {
         $this->map = $map;
+    }
+
+    public function getFileVo(): FileVo
+    {
+        return $this->fileVo;
+    }
+
+    public function setFileVo(FileVo $fileVo): void
+    {
+        $this->fileVo = $fileVo;
+    }
+
+    public function getUploadedFile(): ?UploadedFile
+    {
+        return $this->uploadedFile;
+    }
+
+    public function setUploadedFile(?UploadedFile $uploadedFile): void
+    {
+        $this->uploadedFile = $uploadedFile;
     }
 }
