@@ -13,6 +13,7 @@
         <field name="positionX" type="integer" />
         <field name="positionY" type="integer" />
         <one-to-many field="sensors" target-entity="Sensor" mapped-by="city" orphan-removal="true" />
+        <one-to-one field="map" target-entity="File" />
 
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="onPrePersist" />

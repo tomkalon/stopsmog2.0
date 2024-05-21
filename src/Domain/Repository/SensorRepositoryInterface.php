@@ -3,6 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Sensor;
+use App\Domain\Filter\Sensor\SensorFilter;
 
 /**
  * @method Sensor|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,5 +13,5 @@ use App\Domain\Entity\Sensor;
  */
 interface SensorRepositoryInterface
 {
-    public function listAll(?array $sort = null, ?array $filter = null): array;
+    public function listAll(?SensorFilter $filter = null): array;
 }

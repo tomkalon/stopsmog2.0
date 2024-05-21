@@ -3,6 +3,7 @@
 namespace App\Domain\View\City;
 
 use App\Domain\Entity\City;
+use App\Domain\Entity\File;
 
 class CityView
 {
@@ -11,6 +12,8 @@ class CityView
     private ?int $positionX;
     private ?int $positionY;
     private array $sensors;
+    private ?File $map;
+
 
     public function __construct(
         ?int $id = null,
@@ -18,12 +21,14 @@ class CityView
         ?int $positionX = null,
         ?int $positionY = null,
         array $sensors = [],
+        ?File $map = null
     ) {
         $this->id = $id;
         $this->name = $name;
         $this->positionX = $positionX;
         $this->positionY = $positionY;
         $this->sensors = $sensors;
+        $this->map = $map;
     }
 
     public static function fromEntity(City $city): self
@@ -34,6 +39,7 @@ class CityView
             $city->getPositionX(),
             $city->getPositionY(),
             $city->getSensors()->toArray(),
+            $city->getMap()
         );
     }
 
@@ -85,5 +91,15 @@ class CityView
     public function setSensors(array $sensors): void
     {
         $this->sensors = $sensors;
+    }
+
+    public function getMap(): ?File
+    {
+        return $this->map;
+    }
+
+    public function setMap(?File $map): void
+    {
+        $this->map = $map;
     }
 }

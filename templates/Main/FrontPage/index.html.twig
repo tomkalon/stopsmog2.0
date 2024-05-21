@@ -3,14 +3,14 @@
 
 {% block body %}
     {% set referenceTime = "now"|date_modify("-1 hour")|date_modify("-30 minute")|date("Y-m-d H:i:s", "Europe/Warsaw") %}
-    <div {{ stimulus_controller('frontpage--frontpage') }} class="container flex-grow-1 my-3">
+    <div class="container flex-grow-1 my-3">
         <h2 class="my-4">{{ 'ui.frontpage.title'|trans }}</h2>
         <hr>
         <div>
             {% include 'Main/FrontPage/_sensors.html.twig' %}
         </div>
         <div class="map d-flex justify-content-center overflow-x-auto">
-            <div {{ stimulus_target('frontpage--frontpage', 'map') }} data-map class="position-relative my-5">
+            <div data-map class="position-relative my-5">
                 <div class="map-shadow position-relative top-0 z-0">
                     <div class="map-color">
                         {% if settings.mapImage != null %}
@@ -25,7 +25,7 @@
                         <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
                              style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
                             <div class="map-label">{{ city.name }}</div>
-                            {% include 'Main/FrontPage/__measurement_pm10value_label_color.html.twig' %}
+                            {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
                         </div>
                     </a>
                 {% endfor %}

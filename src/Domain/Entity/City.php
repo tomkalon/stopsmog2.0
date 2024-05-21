@@ -15,6 +15,7 @@ class City
     private int $positionX = 0;
     private int $positionY = 0;
     private Collection $sensors;
+    private ?File $map = null;
 
 
     public function getName(): string
@@ -55,5 +56,15 @@ class City
     public function setSensors(Collection $sensors): void
     {
         $this->sensors = $sensors;
+    }
+
+    public function getMap(): ?File
+    {
+        return $this->map;
+    }
+
+    public function setMap(?File $map): void
+    {
+        $this->map = $map;
     }
 }
