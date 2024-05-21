@@ -2,6 +2,7 @@
 
 namespace App\UI\Controller\FrontPage;
 
+use App\Domain\Filter\Sensor\SensorFilter;
 use App\Infrastructure\Query\City\GetCityListInterface;
 use App\Infrastructure\Query\Sensor\GetSensorListInterface;
 use App\Infrastructure\Query\Settings\GetSettingsViewInterface;
@@ -16,11 +17,16 @@ class FrontPageController extends AbstractController
         GetSettingsViewInterface $settingsViewQuery
     ): Response
     {
-        $sensorList = $sensorListQuery->execute();
         $cityList = $cityListQuery->execute();
-        $sensorViewList = $settingsViewQuery->execute();
+        $settingsView = $settingsViewQuery->execute();
+        $sensorList = $sensorListQuery->execute(
+            new SensorFilter(
+                true
+            )
+        );
+
         return $this->render('Main/FrontPage/index.html.twig', [
-            'settings' => $sensorViewList,
+            'settings' => $settingsView,
             'sensorList' => $sensorList,
             'cityList' => $cityList
         ]);

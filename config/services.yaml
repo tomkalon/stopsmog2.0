@@ -31,6 +31,9 @@ services:
       - '../src/Domain/Entity/'
       - '../src/Kernel.php'
       
+  App\Application\Service\City\CityServiceInterface $createCityService: '@App\Application\Service\City\CreateCityService'
+  App\Application\Service\City\CityServiceInterface $updateCityService: '@App\Application\Service\City\UpdateCityService'
+  
   App\Application\Service\File\ImageUploadService:
     arguments:
       $targetDirectory: '%app.path.images%'

@@ -70,12 +70,14 @@ class CityManagementController extends AbstractController
             /** @var CityView $cityView */
             $cityView = $form->getData();
             $cityView->setId($id);
+            $cityView->setUploadedFile($form->get('map')->getData());
             $commandBus->dispatch(new CityCommand($cityView));
             return $this->redirectToRoute('admin_web_city_show', ['id' => $id]);
         }
 
         return $this->render('Admin/CityManagement/update.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'city' => $cityView
         ]);
     }
 }

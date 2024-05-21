@@ -14,12 +14,14 @@
 
     &:hover {
       filter: sepia(0.35);
-      transform: scale(1.02);
+      transform: scale(1.005);
     }
   }
 
   &-image {
     transition: filter 1.5s;
+    max-height: 800px;
+    max-width: 960px;
   }
 
   &-label-container {
@@ -104,6 +106,17 @@
     &-thumb {
       max-height: 800px;
       max-width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 960px) {
+  .map {
+    overflow-x: auto;
+    padding: 3rem;
+    &-container {
+      width: 100%;
     }
   }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Repository;
 
+use App\Domain\Filter\Sensor\SensorFilter;
 use App\Domain\Repository\SensorRepositoryInterface;
 use App\Domain\Entity\Sensor;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -15,20 +16,20 @@ class SensorRepository extends ServiceEntityRepository implements SensorReposito
     }
 
 
-    public function listAll(?array $sort = null, ?array $filter = null): array
+    public function listAll(?SensorFilter $filter = null): array
     {
         $qb = $this->createQueryBuilder('s');
         $qb
             ->addSelect('city')
             ->leftJoin('s.city', 'city');
 
-        if (!$filter) {
-            $qb
-                ->addSelect('measurements')
-                ->leftJoin('s.measurements',
-                    'measurements',
-                    'WITH',
-                    'measurements.id = (SELECT MAX(m.id) FROM App\Domain\Entity\Measurement m WHERE m.sensor = measurements.sensor)');
+        if ($filter) {
+            if ($filter->cityId) {
+                $qb
+                    ->andWhere('city.id = :cityId')
+                    ->setParameter('cityId', $filter->cityId)
+                ;
+            }
         }
 
         return $qb->getQuery()->getResult();

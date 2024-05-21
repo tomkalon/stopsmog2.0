@@ -22,6 +22,7 @@ ui:
   settings:
     label: Ustawienia
     mapImage: Mapa monitorowanego obszaru
+    mapEmpty: Brak zapisanej mapy
     
   user:
     admin:
@@ -54,6 +55,9 @@ ui:
     empty: Brak elementów do wyświetlenia.
     positionX: Współrzędne X
     positionY: Współrzędne Y
+    sensors:
+      empty: Brak przypisanych czujników
+    map: Mapa miejscowości
   
   flash:
     remove:
