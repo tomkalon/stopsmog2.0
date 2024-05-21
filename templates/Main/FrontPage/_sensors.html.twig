@@ -24,9 +24,13 @@
                 <td>{{ sensor.name }}</td>
                 <td>{{ sensor.address }}</td>
                 <td>
-                    <div class="fw-bolder justify-content-center d-flex align-items-center gap-1">
-                        {% include 'Main/FrontPage/__measurement_pm10value_color.html.twig' %}
-                        {{ sensor.measurements|first.pm10 }} <small class="fw-normal text-xs">µg/m<sup>3</sup></small>
+                    <div class="fw-bolder mx-auto d-flex align-items-center gap-1" style="width: 8rem;">
+                        <div style="width: 25px;">
+                            {% include 'Main/FrontPage/__measurement_pm10value_color.html.twig' %}
+                        </div>
+                        <div class="d-flex">
+                            {{ sensor.measurements|first.pm10 }} <small class="fw-normal text-xs">µg/m<sup>3</sup></small>
+                        </div>
                     </div>
                 </td>
                 <td class="text-center">{{ sensor.measurements|first.createdAt|date('Y-m-d - H:i:s') }}</td>

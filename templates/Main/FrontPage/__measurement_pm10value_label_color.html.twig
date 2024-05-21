@@ -8,7 +8,7 @@
         {% endif %}
     {% endif %}
 {% endfor %}
-{% if city.sensors|length != null %}
+{% if city.sensors|length != null and activeSensorsSum != null %}
     {% set pm10sum = pm10sum / activeSensorsSum %}
 {% endif %}
 
