@@ -12,7 +12,6 @@
     {% set pm10sum = pm10sum / activeSensorsSum %}
 {% endif %}
 
-
 {% if pm10sum > 0 and pm10sum <= 20 %}
     <div class="map-marker green">{{ city.sensors|length }}</div>
 {% elseif pm10sum > 20 and pm10sum <= 50 %}

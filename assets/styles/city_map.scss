@@ -4,6 +4,34 @@
     max-height: 800px;
     max-width: 960px;
   }
+
+  &-label-container {
+    transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.6)!important;
+    }
+  }
+
+  &-label {
+    transition: background-color 1.5s, color 1.5s;
+    background: #154859;
+    color: #ffffff;
+    border-radius: 0.25rem 0.25rem;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 0.15rem 0.35rem;
+    border-top: 1px solid #495b65;
+    border-left: 1px solid #495b65;
+    border-right: 1px solid #495b65;
+    border-bottom: 1px solid #495b65;
+    filter: drop-shadow(4px 3px 0px #000000);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 @media (max-width: 960px) {

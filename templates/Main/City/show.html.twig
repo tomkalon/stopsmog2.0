@@ -19,13 +19,22 @@
             {%  include 'Main/City/_sensors.html.twig' %}
         </div>
         <div class="city-map my-5 d-flex justify-content-center">
-            <div class="map-container">
-                {% if city.map != null %}
-                    <img class="city-map-image" src="{{ file_directory ~ city.getMap.getFilename }}" alt="Map">
-                {% else %}
-                    <p class="text-center"><small>{{ 'ui.settings.mapEmpty'|trans }}</small></p>
-                    <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" alt="Map">
-                {% endif %}
+            <div class="map-container position-relative my-5">
+                <div class="position-relative top-0 z-0">
+                    {% if city.map != null %}
+                        <img class="city-map-image" src="{{ file_directory ~ city.getMap.getFilename }}" alt="Map">
+                    {% else %}
+                        <p class="text-center"><small>{{ 'ui.settings.mapEmpty'|trans }}</small></p>
+                        <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" alt="Map">
+                    {% endif %}
+                </div>
+                {% for sensor in sensorList %}
+                    <div class="city-map-label-container position-absolute d-flex align-items-center justify-content-center"
+                         style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
+                        <div class="city-map-label">{{ sensor.name }}</div>
+                        {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
