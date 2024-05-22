@@ -9,7 +9,7 @@ class SensorView
 {
     private ?int $id;
     private ?string $name;
-    private City $city;
+    private ?City $city;
     private ?string $address;
     private ?array $measurements;
 
@@ -58,12 +58,12 @@ class SensorView
         $this->name = $name;
     }
 
-    public function getCity(): City
+    public function getCity(): ?City
     {
         return $this->city;
     }
 
-    public function setCity(City $city): void
+    public function setCity(?City $city): void
     {
         $this->city = $city;
     }

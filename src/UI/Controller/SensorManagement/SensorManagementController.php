@@ -42,6 +42,7 @@ class SensorManagementController extends AbstractController
     {
         $form = $this->createForm(SensorType::class, new SensorView());
         $form->handleRequest($request);
+
         if ($form->isSubmitted() and $form->isValid()) {
 
             /** @var SensorView $sensorView */

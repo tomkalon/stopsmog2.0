@@ -15,8 +15,8 @@ class CityView
     private ?int $positionY;
     private array $sensors;
     private ?File $map;
-    private FileVo $fileVo;
-    private ?UploadedFile $uploadedFile;
+    private ?FileVo $fileVo = null;
+    private ?UploadedFile $uploadedFile = null;
 
     public function __construct(
         ?int $id = null,
@@ -106,12 +106,12 @@ class CityView
         $this->map = $map;
     }
 
-    public function getFileVo(): FileVo
+    public function getFileVo(): ?FileVo
     {
         return $this->fileVo;
     }
 
-    public function setFileVo(FileVo $fileVo): void
+    public function setFileVo(?FileVo $fileVo): void
     {
         $this->fileVo = $fileVo;
     }
