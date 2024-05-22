@@ -19,6 +19,8 @@
                         {% else %}
                             <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
                         {% endif %}
+                    {% else %}
+                        <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
                     {% endif %}
                 </td>
                 <td>{{ sensor.city.name }}</td>
