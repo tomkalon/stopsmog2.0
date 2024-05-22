@@ -1,0 +1,17 @@
+.city-map {
+  &-image {
+    filter: drop-shadow(5px 5px 5px #adadad);
+    max-height: 800px;
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 960px) {
+  .city-map {
+    overflow-x: auto;
+    padding: 3rem;
+    &-container {
+      width: 100%;
+    }
+  }
+}
