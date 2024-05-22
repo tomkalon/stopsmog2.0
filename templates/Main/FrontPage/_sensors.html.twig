@@ -13,17 +13,19 @@
         <tbody>
         {% for sensor in sensorList %}
             <tr>
-                <td>
-                    {% if sensor.measurements|first.createdAt|date('Y-m-d H:i:s') < referenceTime %}
-                        <img src="{{ asset('build/images/active.svg') }}" height="15" alt="Active">
-                    {% else %}
-                        <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
+                <td>{% if sensor.measurements|first %}
+                        {% if sensor.measurements|first.createdAt|date('Y-m-d H:i:s') < referenceTime %}
+                            <img src="{{ asset('build/images/active.svg') }}" height="15" alt="Active">
+                        {% else %}
+                            <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
+                        {% endif %}
                     {% endif %}
                 </td>
                 <td>{{ sensor.city.name }}</td>
                 <td>{{ sensor.name }}</td>
                 <td>{{ sensor.address }}</td>
-                <td>
+                <td class="text-center">
+                    {% if sensor.measurements|first %}
                     <div class="fw-bolder mx-auto d-flex align-items-center gap-1" style="width: 8rem;">
                         <div style="width: 25px;">
                             {% include 'Main/Common/_measurement_pm10value_color.html.twig' %}
@@ -32,8 +34,17 @@
                             {{ sensor.measurements|first.pm10 }} <small class="fw-normal text-xs">µg/m<sup>3</sup></small>
                         </div>
                     </div>
+                    {% else %}
+                        ---
+                    {% endif %}
                 </td>
-                <td class="text-center">{{ sensor.measurements|first.createdAt|date('Y-m-d - H:i:s') }}</td>
+                <td class="text-center">
+                    {% if sensor.measurements|first %}
+                        {{ sensor.measurements|first.createdAt|date('Y-m-d - H:i:s') }}
+                    {% else %}
+                        ---
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

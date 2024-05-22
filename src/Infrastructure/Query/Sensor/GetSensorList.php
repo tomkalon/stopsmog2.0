@@ -28,11 +28,14 @@ readonly class GetSensorList implements GetSensorListInterface
 
         foreach ($sensorList as $index => $sensor) {
             $sensorViewList[$index] = SensorView::fromEntity($sensor);
-            $sensorViewList[$index]->setMeasurements(
-                $filter ? (
-                $filter->single_measurement ? [$sensor->getMeasurements()->last()] : $sensor->getMeasurements()
-                ) : $sensor->getMeasurements()->toArray()
-            );
+
+            if ($filter) {
+                if ($filter->single_measurement) {
+                    $sensorViewList[$index]->setMeasurements([$sensor->getMeasurements()->last()]);
+                } else {
+                    $sensorViewList[$index]->setMeasurements($sensor->getMeasurements()->toArray());
+                }
+            }
         }
         return $sensorViewList;
     }

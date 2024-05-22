@@ -25,6 +25,7 @@ class FrontPageController extends AbstractController
             )
         );
 
+
         return $this->render('Main/FrontPage/index.html.twig', [
             'settings' => $settingsView,
             'sensorList' => $sensorList,
