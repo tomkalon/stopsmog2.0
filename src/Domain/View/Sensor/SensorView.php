@@ -20,8 +20,8 @@ class SensorView
         ?string $name = null,
         City $city = null,
         ?string $address = null,
-        ?int $positionX = null,
-        ?int $positionY = null,
+        ?int $positionX = 0,
+        ?int $positionY = 0,
         ?array $measurements = null
     ) {
         $this->id = $id;

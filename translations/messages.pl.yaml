@@ -43,6 +43,8 @@ ui:
     name: Nazwa
     city: Miejscowość
     address: Adres
+    positionX: Współrzędne X
+    positionY: Współrzędne Y
     empty: Brak elementów do wyświetlenia.
     
   city:

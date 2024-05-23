@@ -6,6 +6,7 @@ use App\Domain\Entity\City;
 use App\Domain\View\Sensor\SensorView;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,16 @@ class SensorType extends AbstractType
             ->add('address', TextType::class, [
                 'constraints' => [
                     new Length(['min' => 3]),
+                ]
+            ])
+            ->add('positionX', IntegerType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' => 4]),
+                ]
+            ])
+            ->add('positionY', IntegerType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' => 4]),
                 ]
             ])
             ->add('city', EntityType::class, [
