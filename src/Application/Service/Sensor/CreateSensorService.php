@@ -13,6 +13,8 @@ readonly class CreateSensorService extends PersistSensorAbstractService
         $sensor->setName($sensorView->getName());
         $sensor->setCity($sensorView->getCity());
         $sensor->setAddress($sensorView->getAddress());
+        $sensor->setPositionX($sensorView->getPositionX() ?? $sensor->getPositionX());
+        $sensor->setPositionY($sensorView->getPositionY() ?? $sensor->getPositionY());
 
         $this->persist($sensor);
     }

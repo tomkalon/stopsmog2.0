@@ -14,6 +14,8 @@ class Sensor
     private string $name;
     private City $city;
     private string $address;
+    private int $positionX = 0;
+    private int $positionY = 0;
     private Collection $measurements;
 
     public function getName(): string
@@ -44,6 +46,26 @@ class Sensor
     public function setAddress(string $address): void
     {
         $this->address = $address;
+    }
+
+    public function getPositionX(): int
+    {
+        return $this->positionX;
+    }
+
+    public function setPositionX(int $positionX): void
+    {
+        $this->positionX = $positionX;
+    }
+
+    public function getPositionY(): int
+    {
+        return $this->positionY;
+    }
+
+    public function setPositionY(int $positionY): void
+    {
+        $this->positionY = $positionY;
     }
 
     public function getMeasurements(): Collection

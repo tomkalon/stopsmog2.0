@@ -10,6 +10,8 @@
             {{ form_row(form.name) }}
             {{ form_row(form.city) }}
             {{ form_row(form.address) }}
+            {{ form_row(form.positionX) }}
+            {{ form_row(form.positionY) }}
             <div class="d-flex gap-2">
                 <button class="btn btn-danger mb-3" type="button">
                     <a href="{{ path('admin_web_sensor_index') }}">{{ 'ui.buttons.return'|trans }}</a>

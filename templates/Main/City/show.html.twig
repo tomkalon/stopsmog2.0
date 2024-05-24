@@ -30,9 +30,9 @@
                 </div>
                 {% for sensor in sensorList %}
                     <div class="city-map-label-container position-absolute d-flex align-items-center justify-content-center"
-                         style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
+                         style="top: {{ sensor.positionY }}px; left: {{ sensor.positionX }}px">
                         <div class="city-map-label">{{ sensor.name }}</div>
-                        {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
+                        {% include 'Main/City/_measurement_pm10value.html.twig' %}
                     </div>
                 {% endfor %}
             </div>

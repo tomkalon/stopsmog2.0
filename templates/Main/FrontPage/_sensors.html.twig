@@ -15,9 +15,9 @@
             <tr>
                 <td>{% if sensor.measurements|first %}
                         {% if sensor.measurements|first.createdAt|date('Y-m-d H:i:s') < referenceTime %}
-                            <img src="{{ asset('build/images/active.svg') }}" height="15" alt="Active">
+                            <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Active">
                         {% else %}
-                            <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
+                            <img src="{{ asset('build/images/active.svg') }}" height="15" alt="Inactive">
                         {% endif %}
                     {% else %}
                         <img src="{{ asset('build/images/inactive.svg') }}" height="15" alt="Inactive">
@@ -30,7 +30,7 @@
                     {% if sensor.measurements|first %}
                     <div class="fw-bolder mx-auto d-flex align-items-center gap-1" style="width: 8rem;">
                         <div style="width: 25px;">
-                            {% include 'Main/Common/_measurement_pm10value_color.html.twig' %}
+                            {% include 'Main/Common/_measurement_pm10_color.html.twig' %}
                         </div>
                         <div class="d-flex">
                             {{ sensor.measurements|first.pm10 }} <small class="fw-normal text-xs">µg/m<sup>3</sup></small>

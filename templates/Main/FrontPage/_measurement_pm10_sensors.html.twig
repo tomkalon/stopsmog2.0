@@ -13,15 +13,15 @@
 {% endif %}
 
 {% if pm10sum > 0 and pm10sum <= 20 %}
-    <div class="map-marker green">{{ city.sensors|length }}</div>
+    <div class="map-marker green">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 20 and pm10sum <= 50 %}
-    <div class="map-marker yellow">{{ city.sensors|length }}</div>
+    <div class="map-marker yellow">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 50 and pm10sum <= 80 %}
-    <div class="map-marker orange">{{ city.sensors|length }}</div>
+    <div class="map-marker orange">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 80 and pm10sum <= 110 %}
-    <div class="map-marker red">{{ city.sensors|length }}</div>
+    <div class="map-marker red">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 110 and pm10sum <= 150 %}
-    <div class="map-marker claret">{{ city.sensors|length }}</div>
+    <div class="map-marker claret">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 150 %}
-    <div class="map-marker violet">{{ city.sensors|length }}</div>
+    <div class="map-marker violet">{{ activeSensorsSum }}</div>
 {% endif %}
