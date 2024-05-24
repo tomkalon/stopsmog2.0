@@ -9,17 +9,11 @@ readonly class UpdateSensorService extends PersistSensorAbstractService
     public function save(SensorView $sensorView): void
     {
         $sensor = $this->getEntity($sensorView);
-        if ($sensorView->getName()) {
-            $sensor->setName($sensorView->getName());
-        }
-
-        if ($sensorView->getCity()) {
-            $sensor->setCity($sensorView->getCity());
-        }
-
-        if ($sensorView->getAddress()) {
-            $sensor->setAddress($sensorView->getAddress());
-        }
+        $sensor->setName($sensorView->getName() ?? $sensor->getName());
+        $sensor->setCity($sensorView->getCity() ?? $sensor->getCity());
+        $sensor->setAddress($sensorView->getAddress() ?? $sensor->getAddress());
+        $sensor->setPositionX($sensorView->getPositionX() ?? $sensor->getPositionX());
+        $sensor->setPositionY($sensorView->getPositionY() ?? $sensor->getPositionY());
 
         $this->persist($sensor);
     }

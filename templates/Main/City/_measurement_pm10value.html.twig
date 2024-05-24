@@ -1,0 +1,16 @@
+{% if sensor.measurements|first.createdAt|date('Y-m-d H:i:s') > referenceTime %}
+    {% set pm10sum = sensor.measurements|first.pm10 %}
+    {% if pm10sum > 0 and pm10sum <= 20 %}
+        <div class="city-map-marker green">{{ pm10sum }}</div>
+    {% elseif pm10sum > 20 and pm10sum <= 50 %}
+        <div class="city-map-marker yellow">{{ pm10sum }}</div>
+    {% elseif pm10sum > 50 and pm10sum <= 80 %}
+        <div class="city-map-marker orange">{{ pm10sum }}</div>
+    {% elseif pm10sum > 80 and pm10sum <= 110 %}
+        <div class="city-map-marker red">{{ pm10sum }}</div>
+    {% elseif pm10sum > 110 and pm10sum <= 150 %}
+        <div class="city-map-marker claret">{{ pm10sum }}</div>
+    {% elseif pm10sum > 150 %}
+        <div class="city-map-marker violet">{{ pm10sum }}</div>
+    {% endif %}
+{% endif %}

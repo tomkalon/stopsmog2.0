@@ -75,3 +75,10 @@ ui:
     reading_time: Czas odczytu
     activity: +
     empty: Brak elementów do wyświetlenia.
+    description:
+      color:
+        name: Kolor
+        desc: odwzorowuje średnią wartość zanieczyszczeń pm10
+      number:
+        name: Liczba
+        desc: określa ilość aktywnych czujników pomiarowych

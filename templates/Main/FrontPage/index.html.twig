@@ -26,10 +26,23 @@
                     <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
                          style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
                         <div class="map-label">{{ city.name }}</div>
-                        {% include 'Main/Common/_measurement_pm10value_label_color.html.twig' %}
+                        {% include 'Main/FrontPage/_measurement_pm10_sensors.html.twig' %}
                     </div>
                 </a>
             {% endfor %}
+        </div>
+    </div>
+    <hr>
+    <div class="my-1 d-flex gap-3 justify-content-center flex-wrap">
+        <div class="d-flex items-center">
+            <div class="map-label-container d-flex align-items-center justify-content-center" style="transform: none!important;">
+                <div class="map-label">Nazwa miejscowości</div>
+                <div class="map-marker orange">3</div>
+            </div>
+        </div>
+        <div class="px-2 d-flex flex-column justify-content-center text-center text-lg-start">
+            <span><strong>{{ 'ui.frontpage.description.color.name'|trans }}</strong> {{ 'ui.frontpage.description.color.desc'|trans }}.</span>
+            <span><strong>{{ 'ui.frontpage.description.number.name'|trans }}</strong> {{ 'ui.frontpage.description.number.desc'|trans }}.</span>
         </div>
     </div>
     {% include 'Main/FrontPage/_legend.html.twig' %}

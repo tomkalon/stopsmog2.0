@@ -9,7 +9,7 @@
     transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s;
     transform: scale(1);
     &:hover {
-      transform: scale(1.6)!important;
+      transform: scale(1.4)!important;
     }
   }
 
@@ -30,6 +30,45 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  &-marker{
+    transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s, margin-top 1.5s;
+    background: #333333;
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.15rem 0.35rem;
+    border-left: 1px solid #154859;
+    border-right: 1px solid #154859;
+    border-bottom: 1px solid #154859;
+    border-bottom: 1px solid #154859;
+    width: 34px;
+    height: 22px;
+    z-index: 10;
+    filter: drop-shadow(3px 3px 1px #000000bb);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
+    &.green {
+      background: #22720b;
+    }
+    &.yellow {
+      background: #ffdc00;
+    }
+    &.orange {
+      background: #ff9900;
+    }
+    &.red {
+      background: #dc0d0d;
+    }
+    &.claret {
+      background: #720606;
+    }
+    &.violet {
+      background: #6e0579;
     }
   }
 }
