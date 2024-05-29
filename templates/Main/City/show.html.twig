@@ -16,7 +16,7 @@
         <h3 class="text-center">{{ city.name }}</h3>
         <hr>
         <div class="overflow-x-auto">
-            {%  include 'Main/City/_sensors.html.twig' %}
+            {% include 'Main/City/_sensors.html.twig' %}
         </div>
         <div class="city-map my-5 d-flex justify-content-center">
             <div class="map-container position-relative my-5">
@@ -25,15 +25,17 @@
                         <img class="city-map-image" src="{{ file_directory ~ city.getMap.getFilename }}" alt="Map">
                     {% else %}
                         <p class="text-center"><small>{{ 'ui.settings.mapEmpty'|trans }}</small></p>
-                        <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp')}}" alt="Map">
+                        <img class="map-image cursor-pointer" src="{{ asset('build/images/no-image.webp') }}" alt="Map">
                     {% endif %}
                 </div>
                 {% for sensor in sensorList %}
-                    <div class="city-map-label-container position-absolute d-flex align-items-center justify-content-center"
-                         style="top: {{ sensor.positionY }}px; left: {{ sensor.positionX }}px">
-                        <div class="city-map-label">{{ sensor.name }}</div>
-                        {% include 'Main/City/_measurement_pm10value.html.twig' %}
-                    </div>
+                    <a href="{{ path('main_sensor_show', {id: sensor.id}) }}">
+                        <div class="city-map-label-container position-absolute d-flex align-items-center justify-content-center"
+                             style="top: {{ sensor.positionY }}px; left: {{ sensor.positionX }}px">
+                            <div class="city-map-label">{{ sensor.name }}</div>
+                            {% include 'Main/City/_measurement_pm10value.html.twig' %}
+                        </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

@@ -27,8 +27,22 @@ class SensorRepository extends ServiceEntityRepository implements SensorReposito
             if ($filter->cityId) {
                 $qb
                     ->andWhere('city.id = :cityId')
-                    ->setParameter('cityId', $filter->cityId)
-                ;
+                    ->setParameter('cityId', $filter->cityId);
+            }
+        }
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getSensorWithFilter(int $id, ?SensorFilter $filter): Sensor
+    {
+        $qb = $this->createQueryBuilder('s');
+        $qb->where('s.id = :id')
+            ->setParameter('id', $id);
+
+        if ($filter) {
+            if ($filter->periodNumber) {
+
             }
         }
 
