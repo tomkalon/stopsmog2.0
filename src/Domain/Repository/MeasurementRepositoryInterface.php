@@ -3,6 +3,7 @@
 namespace App\Domain\Repository;
 
 use App\Domain\Entity\Measurement;
+use App\Domain\Filter\Sensor\SensorFilter;
 
 /**
  * @method Measurement|null find($id, $lockMode = null, $lockVersion = null)
@@ -12,5 +13,5 @@ use App\Domain\Entity\Measurement;
  */
 interface MeasurementRepositoryInterface
 {
-
+    public function getSensorMeasurementsByFilter(string $sensorId, SensorFilter $sensorFilter): array;
 }

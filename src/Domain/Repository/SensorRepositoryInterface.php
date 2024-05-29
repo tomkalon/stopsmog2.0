@@ -14,6 +14,4 @@ use App\Domain\Filter\Sensor\SensorFilter;
 interface SensorRepositoryInterface
 {
     public function listAll(?SensorFilter $filter = null): array;
-    public function getSensorWithFilter(int $id, ?SensorFilter $filter): Sensor;
-
 }
