@@ -2,6 +2,8 @@
 
 namespace App\UI\Controller\Sensor;
 
+use App\Application\DTO\Sensor\SensorDto;
+use App\Domain\Entity\Measurement;
 use App\Domain\Filter\Sensor\SensorFilter;
 use App\Infrastructure\Query\Sensor\GetSensorView;
 use DateTimeImmutable;
@@ -17,7 +19,7 @@ class SensorController extends AbstractController
         $sensorView = $getSensorViewQuery->execute(
             $id,
             new SensorFilter(
-                timePeriod: new DateTimeImmutable('today midnight')
+                timePeriodStart: new DateTimeImmutable('today midnight')
             )
         );
 

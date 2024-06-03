@@ -22,10 +22,15 @@ class MeasurementRepository extends ServiceEntityRepository implements Measureme
             ->where('m.sensor = :sensorId')
             ->setParameter('sensorId', $sensorId);
 
-        if ($sensorFilter->timePeriod) {
+        if ($sensorFilter->timePeriodStart) {
             $qb
-                ->andWhere('m.createdAt >= :timePeriod')
-                ->setParameter('timePeriod', $sensorFilter->timePeriod);
+                ->andWhere('m.createdAt >= :timePeriodStart')
+                ->setParameter('timePeriodStart', $sensorFilter->timePeriodStart);
+        }
+        if ($sensorFilter->timePeriodEnd) {
+            $qb
+                ->andWhere('m.createdAt <= :timePeriodEnd')
+                ->setParameter('timePeriodEnd', $sensorFilter->timePeriodEnd);
         }
 
         return $qb->getQuery()->getResult();

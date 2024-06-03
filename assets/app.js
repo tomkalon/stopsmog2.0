@@ -1,4 +1,6 @@
+import { registerReactControllerComponents } from '@symfony/ux-react';
 import './bootstrap.js';
+
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -17,3 +19,5 @@ const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
+
+registerReactControllerComponents(require.context('./react/controllers', true, /\.(j|t)sx?$/));

@@ -13,6 +13,6 @@
     <hr>
     <h3 class="text-center">{{ sensor.name }}</h3>
     <hr>
-    <div></div>
+    <div {{ react_component('Main/Sensor/Sensor', { sensor: sensor.id }) }}></div>
     {% include 'Main/FrontPage/_legend.html.twig' %}
 {% endblock %}
