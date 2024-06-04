@@ -12,5 +12,5 @@ services:
     
   measurements.date_filter:
     parent: 'api_platform.doctrine.orm.date_filter'
-    arguments: [ { createdAt: 'after' } ]
+    arguments: [ { createdAt: ~ } ]
     tags: [ 'api_platform.filter' ]

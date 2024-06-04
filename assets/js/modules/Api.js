@@ -26,6 +26,8 @@ function remove(path, params, callback = null, options = null)
 
 function apiHandler(method, path, params, callback = null, options = null)
 {
+
+    console.log(Routing.generate(path, params))
     if (options && options['router'] === false) {
         $.ajax({
             method: method,
