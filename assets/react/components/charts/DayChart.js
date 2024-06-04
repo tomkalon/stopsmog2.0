@@ -3,20 +3,13 @@ import Container from 'react-bootstrap/Container';
 import Box from '@mui/material/Box';
 
 import { axisClasses } from '@mui/x-charts/ChartsAxis';
-import {BarChart, BarPlot} from '@mui/x-charts/BarChart';
+import {BarChart} from '@mui/x-charts/BarChart';
 
 
-export default function DayChart(props) {
+export default function DayChart(props)
+{
     const xData = []
     const xLabels = []
-
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-
-    };
 
     props.data['hydra:member'].forEach((measurement) => {
         xData.push(measurement.pm10)
@@ -31,7 +24,7 @@ export default function DayChart(props) {
                     height={500}
                     axisHighlight={{
                         x: 'line'
-                    }}
+                        }}
                     xAxis={[{
                         scaleType: 'band',
                         valueFormatter: (date, context) =>
@@ -47,7 +40,7 @@ export default function DayChart(props) {
                             fontFamily: "Poppins"
                         },
 
-                    }]}
+                        }]}
                     yAxis={[ {
                         min: 0,
                         label: "Wartość PM10",
@@ -62,9 +55,9 @@ export default function DayChart(props) {
                             thresholds: [25, 50, 80, 110, 150],
                             colors: ['green', 'yellow', 'orange', 'red', '#aa1e1e',  'purple'],
                         },
-                    }]}
+                        }]}
                     sx={
-                        (theme) => ({
+                        () => ({
                             [`.${axisClasses.left} .${axisClasses.label}`]: {
                                 transform: 'translate(-10px, 0)',
                             },
@@ -75,7 +68,7 @@ export default function DayChart(props) {
                         label: 'PM10',
                         type: 'bar',
                         color: '#ffffff'
-                    }]}
+                        }]}
                 />
             </Box>
         </Container>
