@@ -3,12 +3,8 @@ import Api from '@Api';
 import Container from 'react-bootstrap/Container';
 import Box from '@mui/material/Box';
 
-import { ChartContainer } from '@mui/x-charts/ChartContainer';
-import { ChartsReferenceLine } from '@mui/x-charts/ChartsReferenceLine';
-import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
-import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
-import { LinePlot, MarkPlot } from '@mui/x-charts/LineChart';
-import {hydrate} from "react-dom";
+import { axisClasses } from '@mui/x-charts/ChartsAxis';
+import {BarChart, BarPlot} from '@mui/x-charts/BarChart';
 
 export default function (props) {
 
@@ -40,37 +36,52 @@ export default function (props) {
         })
     }
 
+    const chartSetting = {
+        yAxis: [
+            {
+                label: 'Wartość PM10',
+                labelStyle: {
+                    fontSize: 16,
+                    fill: "blue"
+                },
+                min: 0,
+                colorMap: {
+                    type: 'continuous',
+                    min: 0,
+                    max: 200,
+                    color: ['green', 'red'],
+                },
+            },
+        ],
+
+        width: 900,
+        height: 560,
+        sx: {
+            [`.${axisClasses.left} .${axisClasses.label}`]: {
+                transform: 'translate(-20px, 0)',
+            },
+        },
+    };
+
     return (
         <Container>
             <Box display="flex">
-                <ChartContainer
-                    width={960}
-                    height={500}
+                <BarChart
+                    xAxis={[{
+                        scaleType: 'band',
+                        dataKey: 'hour',
+                        valueFormatter: (date) => date.getUTCHours().toString(),
+                        data: xLabels
+
+                    }]}
                     series={[{
                         data: xData,
                         label: 'pm10',
-                        type: 'line'
+                        type: 'bar',
                     }]}
-                    xAxis={[{
-                        scaleType: 'utc',
-                        valueFormatter: (date) => date.getUTCHours().toString(),
-                        data: xLabels
-                    }]}
-                    yAxis={[ {
-                        min: 0,
-                        colorMap: {
-                            type: 'piecewise',
-                            thresholds: [0, 25, 50, 80, 110, 150],
-                            colors: ['green', 'yellow', 'orange', 'red', 'burgundy',  'purple'],
-                        }
-                    }]}
-                >
-                    <MarkPlot />
-                    <LinePlot />
-                    <ChartsReferenceLine y={50} label="Norma" lineStyle={{ stroke: 'red', strokeDasharray: '10 5'  }} />
-                    <ChartsXAxis />
-                    <ChartsYAxis />
-                </ChartContainer>
+                    grid={{ horizontal: true }}
+                    {...chartSetting}
+                />
             </Box>
         </Container>
     );
