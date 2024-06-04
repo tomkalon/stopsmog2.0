@@ -37,12 +37,25 @@ export default function (props) {
     }
 
     const chartSetting = {
+        xAxis: [
+            {
+                scaleType: 'band',
+                dataKey: 'hour',
+                valueFormatter: (date) => date.getUTCHours().toString(),
+                data: xLabels,
+                label: 'Godzina',
+                labelStyle: {
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                },
+            }
+        ],
         yAxis: [
             {
                 label: 'Wartość PM10',
                 labelStyle: {
                     fontSize: 16,
-                    fill: "blue"
+                    fontWeight: 'bold',
                 },
                 min: 0,
                 colorMap: {
@@ -53,11 +66,10 @@ export default function (props) {
                 },
             },
         ],
-
         width: 900,
         height: 560,
         sx: {
-            [`.${axisClasses.left} .${axisClasses.label}`]: {
+            [`.${axisClasses.left}, .${axisClasses.label}`]: {
                 transform: 'translate(-20px, 0)',
             },
         },
@@ -67,17 +79,11 @@ export default function (props) {
         <Container>
             <Box display="flex">
                 <BarChart
-                    xAxis={[{
-                        scaleType: 'band',
-                        dataKey: 'hour',
-                        valueFormatter: (date) => date.getUTCHours().toString(),
-                        data: xLabels
-
-                    }]}
                     series={[{
                         data: xData,
-                        label: 'pm10',
+                        label: 'PM10',
                         type: 'bar',
+                        color: '#ffffff'
                     }]}
                     grid={{ horizontal: true }}
                     {...chartSetting}
