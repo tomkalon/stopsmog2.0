@@ -37,39 +37,16 @@ export default function (props) {
     }
 
     const chartSetting = {
-        xAxis: [
-            {
-                scaleType: 'band',
-                dataKey: 'hour',
-                valueFormatter: (date) => date.getUTCHours().toString(),
-                data: xLabels,
-                label: 'Godzina',
-                labelStyle: {
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                },
-            }
-        ],
         yAxis: [
             {
                 label: 'Wartość PM10',
-                labelStyle: {
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                },
-                min: 0,
-                colorMap: {
-                    type: 'continuous',
-                    min: 0,
-                    max: 200,
-                    color: ['green', 'red'],
-                },
             },
         ],
+
         width: 900,
         height: 560,
         sx: {
-            [`.${axisClasses.left}, .${axisClasses.label}`]: {
+            [`.${axisClasses.left} .${axisClasses.label}`]: {
                 transform: 'translate(-20px, 0)',
             },
         },
@@ -79,14 +56,50 @@ export default function (props) {
         <Container>
             <Box display="flex">
                 <BarChart
+                    width={960}
+                    height={500}
+                    xAxis={[{
+                        scaleType: 'band',
+                        dataKey: 'hour',
+                        valueFormatter: (date) => date.getUTCHours().toString(),
+                        data: xLabels,
+                        label: "Godzina",
+                        labelStyle: {
+                            fontSize: 14,
+                            fill: "black",
+                            fontWeight: "bold",
+                            fontFamily: "Poppins"
+                        },
+
+                    }]}
+                    yAxis={[ {
+                        min: 0,
+                        label: "Wartość PM10",
+                        labelStyle: {
+                            fontSize: 14,
+                            fill: "black",
+                            fontWeight: "bold",
+                            fontFamily: "Poppins"
+                        },
+                        colorMap: {
+                            type: 'piecewise',
+                            thresholds: [25, 50, 80, 110, 150],
+                            colors: ['green', 'yellow', 'orange', 'red', '#aa1e1e',  'purple'],
+                        },
+                    }]}
+                    sx={
+                        (theme) => ({
+                            [`.${axisClasses.left} .${axisClasses.label}`]: {
+                                transform: 'translate(-10px, 0)',
+                            },
+                        })
+                    }
                     series={[{
                         data: xData,
                         label: 'PM10',
                         type: 'bar',
                         color: '#ffffff'
                     }]}
-                    grid={{ horizontal: true }}
-                    {...chartSetting}
                 />
             </Box>
         </Container>
