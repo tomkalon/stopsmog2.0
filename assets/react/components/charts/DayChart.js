@@ -2,17 +2,16 @@ import * as React from 'react';
 import Container from 'react-bootstrap/Container';
 import Box from '@mui/material/Box';
 
-import { axisClasses } from '@mui/x-charts/ChartsAxis';
-import { BarChart } from '@mui/x-charts/BarChart';
-import { ChartsReferenceLine } from '@mui/x-charts/ChartsReferenceLine';
+import {axisClasses} from '@mui/x-charts/ChartsAxis';
+import {BarChart} from '@mui/x-charts/BarChart';
+import {ChartsReferenceLine} from '@mui/x-charts/ChartsReferenceLine';
 
 import {
     trans,
     UI_MEASUREMENT_HOUR, UI_MEASUREMENT_DATE, UI_MEASUREMENT_PM10VALUE, UI_MEASUREMENT_NORM
 } from '@Translator';
 
-export default function DayChart(props)
-{
+export default function DayChart(props) {
     const xData = []
     const xLabels = []
     let yMax = 100
@@ -25,7 +24,9 @@ export default function DayChart(props)
         }
     })
 
-    const today = new Date();
+    const today = new Date()
+    let currentDay = today.getUTCFullYear() + '.' + (today.getUTCMonth() + 1) + '.' + (today.getUTCDate())
+
     while (xLabels.length < 24) {
         const length = xLabels.length
         const hour = new Date(today);
@@ -42,28 +43,25 @@ export default function DayChart(props)
                     height={500}
                     axisHighlight={{
                         x: 'line'
-                        }}
-                    grid={{ horizontal: true }}
+                    }}
+                    grid={{horizontal: true}}
                     borderRadius={3}
+                    tooltip={{ trigger: 'item' }}
                     xAxis={[{
                         scaleType: 'band',
                         categoryGapRatio: -0.05,
                         barGapRatio: 0,
-                        valueFormatter: (date, context) =>
-                            context.location === 'tick'
-                            ? date.getUTCHours().toString()
-                            : date.toLocaleString("pl-PL", {timeZone: 'UTC'}),
+                        valueFormatter: (date, context) => date.getUTCHours().toString(),
                         data: xLabels,
-                        label: trans(UI_MEASUREMENT_HOUR),
+                        label: trans(UI_MEASUREMENT_HOUR) + ' | ' + trans(UI_MEASUREMENT_DATE) + ': ' + currentDay,
                         labelStyle: {
                             fontSize: 14,
                             fill: "black",
                             fontWeight: "bold",
                             fontFamily: "Poppins"
                         },
-
-                        }]}
-                    yAxis={[ {
+                    }]}
+                    yAxis={[{
                         min: 0,
                         max: yMax,
                         label: trans(UI_MEASUREMENT_PM10VALUE),
@@ -76,9 +74,9 @@ export default function DayChart(props)
                         colorMap: {
                             type: 'piecewise',
                             thresholds: [25, 50, 80, 110, 150],
-                            colors: ['green', '#d8ff00', '#ffc000', 'red', '#aa1e1e',  'purple'],
+                            colors: ['green', '#d8ff00', '#ffc000', 'red', '#aa1e1e', 'purple'],
                         },
-                        }]}
+                    }]}
                     sx={
                         () => ({
                             [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -91,7 +89,7 @@ export default function DayChart(props)
                         label: 'PM10',
                         type: 'bar',
                         color: '#ffffff'
-                        }]}
+                    }]}
                 >
                     <ChartsReferenceLine y={50}
                                          label={trans(UI_MEASUREMENT_NORM)}
@@ -101,7 +99,7 @@ export default function DayChart(props)
                                              fontWeight: "bold",
                                              fill: "#ff0000"
                                          }}
-                                         lineStyle={{ stroke: 'red', strokeDasharray: '10 5' }}
+                                         lineStyle={{stroke: 'red', strokeDasharray: '10 5'}}
                     />
                 </BarChart>
             </Box>

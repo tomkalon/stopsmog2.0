@@ -13,6 +13,7 @@ import {
 export default function (props) {
 
     const [data, setData] = useState('init');
+    const [page, setPage] = useState('day');
 
     const today = new Date();
     today.setUTCHours(0, 0, 0);
@@ -28,24 +29,28 @@ export default function (props) {
         )
     }, []);
 
+
+    let component = null
     if (data && data['hydra:totalItems']) {
-        return (<DayChart data={data}/>)
+        if (page === 'day') {
+            component = <Container className={"py-1"}>
+                <DayChart data={data}/>
+            </Container>
+        }
     } else if (data === 'init') {
-        return (
-            <Container className={"py-5"}>
-                <p className={"text-center"}>
-                    {trans(UI_COMMON_LOADING)}
-                </p>
-                <Box display="flex" justifyContent={"center"}>
-                    <Spinner animation="grow"/>
-                </Box>
-            </Container>
-        )
+        component = <Container className={"py-5"}>
+            <p className={"text-center"}>
+                {trans(UI_COMMON_LOADING)}
+            </p>
+            <Box display="flex" justifyContent={"center"}>
+                <Spinner animation="grow"/>
+            </Box>
+        </Container>
     } else {
-        return (
-            <Container>
-                {trans(UI_COMMON_DATA_EMPTY)}
-            </Container>
-        )
+        component = <Container>
+            {trans(UI_COMMON_DATA_EMPTY)}
+        </Container>
     }
+
+    return (component)
 }
