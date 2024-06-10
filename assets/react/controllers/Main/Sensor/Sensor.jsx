@@ -2,13 +2,16 @@ import React, {useState, useEffect} from 'react';
 import Api from '@Api';
 import DayChart from "@ReactComponent/charts/DayChart";
 import Container from "react-bootstrap/Container";
+import Box from '@mui/material/Box';
+
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function (props) {
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState('init');
 
     const today = new Date();
-    today.setHours(0, 0, 0);
+    today.setUTCHours(0, 0, 0);
 
     useEffect(() => {
         Api.get(
@@ -22,9 +25,17 @@ export default function (props) {
     }, []);
 
     if (data && data['hydra:totalItems']) {
-        return(<DayChart data={data}/>)
+        return (<DayChart data={data}/>)
+    } else if (data === 'init') {
+        return (
+            <Container>
+                <Box display="flex" justifyContent={"center"}>
+                    <Spinner animation="grow"/>
+                </Box>
+            </Container>
+        )
     } else {
-        return(
+        return (
             <Container>
                 Brak danych do wyświetlenia.
             </Container>
