@@ -46,11 +46,17 @@ Encore
         '@Api': path.resolve(__dirname, 'assets/js/modules/Api'),
         '@Routing': path.resolve(__dirname, 'assets/js/modules/Routing'),
         '@Routes': path.resolve(__dirname, 'public/js/routes.json'),
-        '@FosRoutes': path.resolve(__dirname, 'vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js')
+        '@FosRoutes': path.resolve(__dirname, 'vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js'),
+        '@Translator': path.resolve(__dirname, 'assets/translator'),
+
+        // COMPONENTS
+        '@ReactComponent': path.resolve(__dirname, 'assets/react/components')
     })
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
+
+    .enableReactPreset()
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -90,7 +96,7 @@ Encore
     //.enableTypeScriptLoader()
 
     // uncomment if you use React
-    //.enableReactPreset()
+    .enableReactPreset()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher

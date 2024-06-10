@@ -36,6 +36,8 @@
     "symfony/stimulus-bundle": "^2.17",
     "symfony/translation": "7.0.*",
     "symfony/twig-bundle": "7.0.*",
+    "symfony/ux-react": "^2.17",
+    "symfony/ux-translator": "^2.18",
     "symfony/validator": "7.0.*",
     "symfony/webpack-encore-bundle": "^2.1",
     "symfony/yaml": "7.0.*",
@@ -93,6 +95,7 @@
     }
   },
   "require-dev": {
+    "squizlabs/php_codesniffer": "@stable",
     "doctrine/doctrine-fixtures-bundle": "^3.5",
     "symfony/maker-bundle": "^1.56",
     "symfony/web-profiler-bundle": "7.0.*"
