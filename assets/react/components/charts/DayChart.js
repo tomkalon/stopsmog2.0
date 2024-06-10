@@ -6,6 +6,11 @@ import { axisClasses } from '@mui/x-charts/ChartsAxis';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { ChartsReferenceLine } from '@mui/x-charts/ChartsReferenceLine';
 
+import {
+    trans,
+    UI_MEASUREMENT_HOUR, UI_MEASUREMENT_DATE, UI_MEASUREMENT_PM10VALUE, UI_MEASUREMENT_NORM
+} from '@Translator';
+
 export default function DayChart(props)
 {
     const xData = []
@@ -42,14 +47,14 @@ export default function DayChart(props)
                     borderRadius={3}
                     xAxis={[{
                         scaleType: 'band',
-                        categoryGapRatio: 0,
+                        categoryGapRatio: -0.05,
                         barGapRatio: 0,
                         valueFormatter: (date, context) =>
                             context.location === 'tick'
                             ? date.getUTCHours().toString()
                             : date.toLocaleString("pl-PL", {timeZone: 'UTC'}),
                         data: xLabels,
-                        label: "Godzina",
+                        label: trans(UI_MEASUREMENT_HOUR),
                         labelStyle: {
                             fontSize: 14,
                             fill: "black",
@@ -61,7 +66,7 @@ export default function DayChart(props)
                     yAxis={[ {
                         min: 0,
                         max: yMax,
-                        label: "Wartość PM10 (µg/m3)",
+                        label: trans(UI_MEASUREMENT_PM10VALUE),
                         labelStyle: {
                             fontSize: 14,
                             fill: "black",
@@ -88,7 +93,16 @@ export default function DayChart(props)
                         color: '#ffffff'
                         }]}
                 >
-                    <ChartsReferenceLine y={50} label="Norma" labelAlign="end" />
+                    <ChartsReferenceLine y={50}
+                                         label={trans(UI_MEASUREMENT_NORM)}
+                                         labelAlign="end"
+                                         labelStyle={{
+                                             fontSize: 12,
+                                             fontWeight: "bold",
+                                             fill: "#ff0000"
+                                         }}
+                                         lineStyle={{ stroke: 'red', strokeDasharray: '10 5' }}
+                    />
                 </BarChart>
             </Box>
         </Container>

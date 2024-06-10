@@ -61,10 +61,11 @@ ui:
       empty: Brak przypisanych czujników
     map: Mapa miejscowości
     
-  measurements:
+  measurement:
     hour: Godzina
     date: Data
-    pm10value: Wartość PM10
+    pm10value: Wartość PM10 (µg/m3)
+    norm: Dopuszczalna norma
   
   flash:
     remove:
