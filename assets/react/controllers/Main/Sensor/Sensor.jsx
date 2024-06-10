@@ -10,6 +10,8 @@ import {
     UI_COMMON_LOADING, UI_COMMON_DATA_EMPTY
 } from '@Translator';
 
+import {ToggleButton, ToggleButtonGroup} from "@mui/material";
+
 export default function (props) {
 
     const [data, setData] = useState('init');
@@ -33,24 +35,55 @@ export default function (props) {
     let component = null
     if (data && data['hydra:totalItems']) {
         if (page === 'day') {
-            component = <Container className={"py-1"}>
+            component = <Box className={"py-1"}>
                 <DayChart data={data}/>
-            </Container>
+            </Box>
         }
     } else if (data === 'init') {
-        component = <Container className={"py-5"}>
+        component = <Box className={"py-5"}>
             <p className={"text-center"}>
                 {trans(UI_COMMON_LOADING)}
             </p>
             <Box display="flex" justifyContent={"center"}>
                 <Spinner animation="grow"/>
             </Box>
-        </Container>
+        </Box>
     } else {
-        component = <Container>
+        component = <Box>
             {trans(UI_COMMON_DATA_EMPTY)}
-        </Container>
+        </Box>
     }
 
-    return (component)
+    const handlePage = (event, newAlignment) => {
+        setPage(newAlignment);
+    };
+    return (
+        <Container>
+            <Box display={"flex"} justifyContent={"center"}>
+                <ToggleButtonGroup
+                    value={page}
+                    exclusive
+                    onChange={handlePage}
+                    aria-label="text alignment"
+                >
+                    <ToggleButton value="day" aria-label="left aligned">
+                        Dzień
+                    </ToggleButton>
+                    <ToggleButton value="week" aria-label="centered">
+                        Tydzień
+                    </ToggleButton>
+                    <ToggleButton value="month" aria-label="centered">
+                        Miesiąc
+                    </ToggleButton>
+                    <ToggleButton value="year" aria-label="centered">
+                        Rok
+                    </ToggleButton>
+                    <ToggleButton value="custom" aria-label="right aligned">
+                        Własny
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            </Box>
+            {component}
+        </Container>
+    )
 }
