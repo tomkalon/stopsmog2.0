@@ -11,7 +11,8 @@ import {
     UI_MEASUREMENT_HOUR, UI_MEASUREMENT_DATE, UI_MEASUREMENT_PM10VALUE, UI_MEASUREMENT_NORM
 } from '@Translator';
 
-export default function DayChart(props) {
+export default function DayChart(props)
+{
     const xData = []
     const xLabels = []
     let yMax = 100
@@ -43,7 +44,7 @@ export default function DayChart(props) {
                     height={500}
                     axisHighlight={{
                         x: 'line'
-                    }}
+                        }}
                     grid={{horizontal: true}}
                     borderRadius={3}
                     tooltip={{ trigger: 'item' }}
@@ -60,7 +61,7 @@ export default function DayChart(props) {
                             fontWeight: "bold",
                             fontFamily: "Poppins"
                         },
-                    }]}
+                        }]}
                     yAxis={[{
                         min: 0,
                         max: yMax,
@@ -76,7 +77,7 @@ export default function DayChart(props) {
                             thresholds: [25, 50, 80, 110, 150],
                             colors: ['green', '#d8ff00', '#ffc000', 'red', '#aa1e1e', 'purple'],
                         },
-                    }]}
+                        }]}
                     sx={
                         () => ({
                             [`.${axisClasses.left} .${axisClasses.label}`]: {
@@ -89,16 +90,16 @@ export default function DayChart(props) {
                         label: 'PM10',
                         type: 'bar',
                         color: '#ffffff'
-                    }]}
+                        }]}
                 >
                     <ChartsReferenceLine y={50}
                                          label={trans(UI_MEASUREMENT_NORM)}
                                          labelAlign="end"
                                          labelStyle={{
-                                             fontSize: 12,
-                                             fontWeight: "bold",
-                                             fill: "#ff0000"
-                                         }}
+                                                fontSize: 12,
+                                                fontWeight: "bold",
+                                                fill: "#ff0000"
+                                                }}
                                          lineStyle={{stroke: 'red', strokeDasharray: '10 5'}}
                     />
                 </BarChart>
