@@ -3,8 +3,12 @@ import Api from '@Api';
 import DayChart from "@ReactComponent/charts/DayChart";
 import Container from "react-bootstrap/Container";
 import Box from '@mui/material/Box';
-
 import Spinner from 'react-bootstrap/Spinner';
+
+import {
+    trans,
+    UI_COMMON_LOADING, UI_COMMON_DATA_EMPTY
+} from '@Translator';
 
 export default function (props) {
 
@@ -28,7 +32,10 @@ export default function (props) {
         return (<DayChart data={data}/>)
     } else if (data === 'init') {
         return (
-            <Container>
+            <Container className={"py-5"}>
+                <p className={"text-center"}>
+                    {trans(UI_COMMON_LOADING)}
+                </p>
                 <Box display="flex" justifyContent={"center"}>
                     <Spinner animation="grow"/>
                 </Box>
@@ -37,7 +44,7 @@ export default function (props) {
     } else {
         return (
             <Container>
-                Brak danych do wyświetlenia.
+                {trans(UI_COMMON_DATA_EMPTY)}
             </Container>
         )
     }

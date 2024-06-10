@@ -14,6 +14,10 @@ ui:
     return: Wróć
     close: Zamknij
     
+  common:
+    loading: Wczytywanie...
+    data_empty: Brak danych do wyświetlenia.
+  
   modal:
     confirm_remove:
       label: Usuwanie
