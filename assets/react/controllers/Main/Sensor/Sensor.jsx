@@ -26,11 +26,11 @@ export default function (props) {
             {
                 sensor: props.sensor,
                 'createdAt[after]': today.toISOString(),
+                'createdAt[before]': null
             },
             (data) => setData(data)
         )
-    }, []);
-
+    }, [page]);
 
     let component = null
     if (data && data['hydra:totalItems']) {
