@@ -54,8 +54,10 @@ export default function (props) {
         </Box>
     }
 
-    const handlePage = (event, newAlignment) => {
-        setPage(newAlignment);
+    const handlePage = (event, newPage) => {
+        if (newPage !== null) {
+            setPage(newPage);
+        }
     };
     return (
         <Container>
@@ -69,16 +71,16 @@ export default function (props) {
                     <ToggleButton value="day" aria-label="left aligned">
                         Dzień
                     </ToggleButton>
-                    <ToggleButton value="week" aria-label="centered">
+                    <ToggleButton value="week" aria-label="centered" disabled>
                         Tydzień
                     </ToggleButton>
-                    <ToggleButton value="month" aria-label="centered">
+                    <ToggleButton value="month" aria-label="centered" disabled>
                         Miesiąc
                     </ToggleButton>
-                    <ToggleButton value="year" aria-label="centered">
+                    <ToggleButton value="year" aria-label="centered" disabled>
                         Rok
                     </ToggleButton>
-                    <ToggleButton value="custom" aria-label="right aligned">
+                    <ToggleButton value="custom" aria-label="right aligned" disabled>
                         Własny
                     </ToggleButton>
                 </ToggleButtonGroup>
