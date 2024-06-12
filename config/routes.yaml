@@ -3,3 +3,6 @@ main_web:
   
 admin_web:
   resource: 'routes/admin/routes.yaml'
+
+api_routes:
+  resource: 'routes/api/routes.yaml'

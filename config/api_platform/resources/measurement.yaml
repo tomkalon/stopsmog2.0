@@ -1,4 +1,3 @@
-
 resources:
   App\Domain\Entity\Measurement:
     shortName: 'Measurement'
@@ -7,6 +6,7 @@ resources:
       ApiPlatform\Metadata\GetCollection:
         name: 'api_measurements_get'
         method: GET
+        security: 'is_granted("PUBLIC_ACCESS")'
         filters: [ 'measurements.search_filter', 'measurements.date_filter' ]
         options:
           expose: true
