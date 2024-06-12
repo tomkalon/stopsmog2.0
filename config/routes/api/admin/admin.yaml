@@ -9,3 +9,8 @@ api_refresh_token:
 api_token_invalidate:
   path: /api/token/invalidate
   methods: [ POST ]
+
+api_token_test:
+  path: /api/token/test
+  methods: [ GET ]
+  controller: App\UI\Controller\Api\Admin\AdminController::test

@@ -1,4 +1,3 @@
-
 resources:
   App\Domain\Entity\Measurement:
     shortName: 'Measurement'
