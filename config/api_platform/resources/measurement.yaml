@@ -8,6 +8,8 @@ resources:
         method: GET
         security: 'is_granted("PUBLIC_ACCESS")'
         filters: [ 'measurements.search_filter', 'measurements.date_filter' ]
+        paginationEnabled: true
+        paginationItemsPerPage: 200
         options:
           expose: true
       ApiPlatform\Metadata\Get:
@@ -16,6 +18,7 @@ resources:
       ApiPlatform\Metadata\Post:
         name: 'api_measurements_post'
         method: POST
+        security: 'is_granted("ROLE_ADMIN")'
 
 properties:
   App\Domain\Entity\Measurement:

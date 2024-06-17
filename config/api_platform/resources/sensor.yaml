@@ -2,10 +2,6 @@ resources:
   App\Domain\Entity\Sensor:
     shortName: 'Sensor'
     description: 'Sensors mounted in specific places'
-    normalizationContext:
-      groups: [ 'sensor.read' ]
-    denormalizationContext:
-      groups: [ 'sensor.write' ]
     operations:
       ApiPlatform\Metadata\GetCollection:
         name: 'api_sensors_get'

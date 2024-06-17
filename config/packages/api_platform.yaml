@@ -18,14 +18,17 @@ api_platform:
         type: header
         
   defaults:
-    pagination_enabled: false
-    pagination_items_per_page: 30
+    pagination_enabled: true
     stateless: true
     cache_headers:
       vary: ['Content-Type', 'Authorization', 'Origin']
     extra_properties:
       standard_put: true
       rfc_7807_compliant_errors: true
+  
+  collection:
+    pagination:
+      page_parameter_name: _page
       
   event_listeners_backward_compatibility_layer: false
   keep_legacy_inflector: false
