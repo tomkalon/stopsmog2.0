@@ -4,7 +4,7 @@
 {% block body %}
     <div class="d-flex justify-content-center gap-4">
         <h2 class="my-4">{{ 'ui.sensor.show'|trans }}</h2>
-        <a href="{{ path('main_index') }}" class="d-flex align-items-center">
+        <a href="{{ path('main_city_show', {id: sensor.city.id}) }}" class="d-flex align-items-center">
             <button class="btn btn-info">
                 {{ 'ui.buttons.return'|trans }}
             </button>
