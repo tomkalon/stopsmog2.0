@@ -11,7 +11,16 @@
                 <h3>{{ sensor.city.name }}, {{ sensor.address }}</h3>
                 <div class="mt-4 lead">{{ 'ui.sensor.api_query'|trans }}:</div>
                 <div class="alert alert-secondary" role="alert">
-                    This is a secondary alert—check it out!
+                    POST {{ app.request.scheme }}://{{ app.request.host }}/api/measurements<br/>
+                    Content-Type: application/json<br/>
+                    Authorization: Bearer <span class="fw-semibold">{token}</span><br/><br/>
+
+                    {<br/>
+                    "pm10": <span class="fw-semibold">{int value}</span>,<br/>
+                    "pm25": <span class="fw-semibold">{int value (optional)}</span>,<br/>
+                    "sensor": "{{ app.request.scheme }}://{{ app.request.host }}/api/sensors/{{ sensor.id }}"<br/>
+                    }<br/><br/>
+                    <button class="btn btn-info btn-sm">{{ 'ui.sensor.check_api'|trans }}</button>
                 </div>
                 <div class="pt-4">
                     <a href="{{ path('admin_web_sensor_update', {id:sensor.id}) }}">

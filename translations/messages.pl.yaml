@@ -47,6 +47,7 @@ ui:
     name: Nazwa
     id: ID
     id_full: Numer identyfikacyjny
+    check_api: Zobacz pełne API
     api_query: Dodanie rekordu poprzez API
     city: Miejscowość
     address: Adres
@@ -82,6 +83,7 @@ ui:
     title: Tabela odczytów
     sensors_list: Lista czujników
     city: Miejscowość
+    city_name: Nazwa miejscowości
     address: Adres
     place: Lokalizacja
     pm10: Wartość PM10
