@@ -45,6 +45,9 @@ ui:
     create: Dodawanie nowego czujnika
     show: Szczegóły czujnika
     name: Nazwa
+    id: ID
+    id_full: Numer identyfikacyjny
+    api_query: Dodanie rekordu poprzez API
     city: Miejscowość
     address: Adres
     positionX: Współrzędne X

@@ -71,18 +71,10 @@ export default function (props) {
                     <ToggleButton value="day" aria-label="left aligned">
                         Dzień
                     </ToggleButton>
-                    <ToggleButton value="week" aria-label="centered" disabled>
+                    <ToggleButton value="week" aria-label="right" disabled>
                         Tydzień
                     </ToggleButton>
-                    <ToggleButton value="month" aria-label="centered" disabled>
-                        Miesiąc
-                    </ToggleButton>
-                    <ToggleButton value="year" aria-label="centered" disabled>
-                        Rok
-                    </ToggleButton>
-                    <ToggleButton value="custom" aria-label="right aligned" disabled>
-                        Własny
-                    </ToggleButton>
+
                 </ToggleButtonGroup>
             </Box>
             {component}

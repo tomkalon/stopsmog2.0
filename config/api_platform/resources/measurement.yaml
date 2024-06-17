@@ -10,6 +10,8 @@ resources:
         filters: [ 'measurements.search_filter', 'measurements.date_filter' ]
         paginationEnabled: true
         paginationItemsPerPage: 200
+        order:
+          createdAt: ASC
         options:
           expose: true
       ApiPlatform\Metadata\Get:

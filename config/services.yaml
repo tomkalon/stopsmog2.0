@@ -6,6 +6,7 @@
 parameters:
   app.path.images: '%kernel.project_dir%/public/%env(APP_FILES_DIRECTORY)%'
   app.default.image.extension: '%env(APP_DEFAULT_IMG_EXTENSION)%'
+  default_timezone: '%env(APP_TIMEZONE)%'
 
 services:
   # default configuration for services in *this* file

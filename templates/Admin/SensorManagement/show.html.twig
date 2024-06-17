@@ -9,6 +9,10 @@
             <div class="h-100 p-5 bg-body-tertiary border rounded-3">
                 <h2>{{ sensor.name }}</h2>
                 <h3>{{ sensor.city.name }}, {{ sensor.address }}</h3>
+                <div class="mt-4 lead">{{ 'ui.sensor.api_query'|trans }}:</div>
+                <div class="alert alert-secondary" role="alert">
+                    This is a secondary alert—check it out!
+                </div>
                 <div class="pt-4">
                     <a href="{{ path('admin_web_sensor_update', {id:sensor.id}) }}">
                         <button class="btn btn-warning" type="button">

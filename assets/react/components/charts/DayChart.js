@@ -2,6 +2,8 @@ import * as React from 'react';
 import Container from 'react-bootstrap/Container';
 import Box from '@mui/material/Box';
 
+import {DataMaker} from '../charts/misc/DataMaker';
+
 import {axisClasses} from '@mui/x-charts/ChartsAxis';
 import {BarChart} from '@mui/x-charts/BarChart';
 import {ChartsReferenceLine} from '@mui/x-charts/ChartsReferenceLine';
@@ -15,6 +17,8 @@ export default function DayChart(props) {
     const xData = []
     const xLabels = []
     let yMax = 100
+
+    let data = {}
 
     props.data['hydra:member'].forEach((measurement) => {
         xData.push(measurement.pm10)
@@ -36,6 +40,10 @@ export default function DayChart(props) {
         xLabels.push(hour);
     }
 
+    if (props.data['hydra:member']) {
+        data = DataMaker(props.data['hydra:member'])
+    }
+
     return (
         <Box display="flex">
             <BarChart
@@ -50,8 +58,8 @@ export default function DayChart(props) {
                     scaleType: 'band',
                     categoryGapRatio: -0.05,
                     barGapRatio: 0,
-                    valueFormatter: (date, context) => date.getUTCHours().toString(),
-                    data: xLabels,
+                    valueFormatter: (date, context) => date.toString(),
+                    data: data.data.label,
                     label: trans(UI_MEASUREMENT_HOUR) + ' | ' + trans(UI_MEASUREMENT_DATE) + ': ' + currentDay,
                     labelStyle: {
                         fontSize: 14,
@@ -62,7 +70,7 @@ export default function DayChart(props) {
                 }]}
                 yAxis={[{
                     min: 0,
-                    max: yMax,
+                    max: data['yMax'],
                     label: trans(UI_MEASUREMENT_PM10VALUE),
                     labelStyle: {
                         fontSize: 14,
@@ -84,7 +92,7 @@ export default function DayChart(props) {
                     })
                 }
                 series={[{
-                    data: xData,
+                    data: data.data.value,
                     label: 'PM10',
                     type: 'bar',
                     color: '#ffffff'

@@ -16,6 +16,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th scope="col">{{ 'ui.sensor.id'|trans }}</th>
                     <th scope="col">{{ 'ui.sensor.name'|trans }}</th>
                     <th scope="col">{{ 'ui.sensor.city'|trans }}</th>
                     <th scope="col">{{ 'ui.sensor.address'|trans }}</th>
@@ -25,7 +26,8 @@
                 <tbody>
                 {% for sensor in sensors %}
                     <tr>
-                        <th scope="row">{{ sensor.name }}</th>
+                        <td class="text-muted">{{ sensor.id }}</td>
+                        <td>{{ sensor.name }}</td>
                         <td>{{ sensor.city.name }}</td>
                         <td>{{ sensor.address }}</td>
                         <td>
