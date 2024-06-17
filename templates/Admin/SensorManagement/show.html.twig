@@ -20,7 +20,7 @@
                     "pm25": <span class="fw-semibold">{int value (optional)}</span>,<br/>
                     "sensor": "{{ app.request.scheme }}://{{ app.request.host }}/api/sensors/{{ sensor.id }}"<br/>
                     }<br/><br/>
-                    <button class="btn btn-info btn-sm">{{ 'ui.sensor.check_api'|trans }}</button>
+                    <a href="/api"><button class="btn btn-info btn-sm">{{ 'ui.sensor.check_api'|trans }}</button></a>
                 </div>
                 <div class="pt-4">
                     <a href="{{ path('admin_web_sensor_update', {id:sensor.id}) }}">
