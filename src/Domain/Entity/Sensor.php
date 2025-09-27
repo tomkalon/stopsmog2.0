@@ -14,7 +14,7 @@ class Sensor
     private string $name;
     private City $city;
     private string $address;
-    private string $description;
+    private ?string $description = null;
     private int $positionX = 0;
     private int $positionY = 0;
     private Collection $measurements;
@@ -49,12 +49,12 @@ class Sensor
         $this->address = $address;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

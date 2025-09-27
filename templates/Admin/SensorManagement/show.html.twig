@@ -9,18 +9,33 @@
             <div class="h-100 p-5 bg-body-tertiary border rounded-3">
                 <h2>{{ sensor.name }}</h2>
                 <h3>{{ sensor.city.name }}, {{ sensor.address }}</h3>
+                <p>{{ sensor.description }}</p>
                 <div class="mt-4 lead">{{ 'ui.sensor.api_query'|trans }}:</div>
                 <div class="alert alert-secondary" role="alert">
                     POST {{ app.request.scheme }}://{{ app.request.host }}/api/measurements<br/>
                     Content-Type: application/json<br/>
                     Authorization: Bearer <span class="fw-semibold">{token}</span><br/><br/>
-
+                    <small>Request body:</small><br/><br/>
                     {<br/>
-                    "pm10": <span class="fw-semibold">{int value}</span>,<br/>
-                    "pm25": <span class="fw-semibold">{int value (optional)}</span>,<br/>
-                    "sensor": "{{ app.request.scheme }}://{{ app.request.host }}/api/sensors/{{ sensor.id }}"<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"pm10": <span class="fw-semibold">{int value}</span>,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"pm25": <span class="fw-semibold">{int value (optional)}</span>,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"sensor": "{{ app.request.scheme }}://{{ app.request.host }}/api/sensors/{{ sensor.id }}"<br/>
                     }<br/><br/>
                     <a href="/api"><button class="btn btn-info btn-sm">{{ 'ui.sensor.check_api'|trans }}</button></a>
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                    POST {{ app.request.scheme }}://{{ app.request.host }}/api/login_check<br/>
+                    Content-Type: application/json<br/><br/>
+                    <small>Request body:</small><br/><br/>
+                    {<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"email": <span class="fw-semibold">{string value}</span>,<br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp;"password": <span class="fw-semibold">{string value (optional)}</span>,<br/>
+                    }<br/>
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                    POST {{ app.request.scheme }}://{{ app.request.host }}/api/token/refresh<br/>
+                    Content-Type: application/x-www-form-urlencoded<br/><br/>
+                    refresh_token=<span class="fw-semibold">{token}</span><br/>
                 </div>
                 <div class="pt-4">
                     <a href="{{ path('admin_web_sensor_update', {id:sensor.id}) }}">
