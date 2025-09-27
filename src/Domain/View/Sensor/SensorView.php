@@ -13,6 +13,7 @@ class SensorView
     private ?string $address;
     private ?int $positionX;
     private ?int $positionY;
+    private ?int $description;
     private ?array $measurements;
 
     public function __construct(
@@ -22,6 +23,7 @@ class SensorView
         ?string $address = null,
         ?int $positionX = 0,
         ?int $positionY = 0,
+        ?string $description = null,
         ?array $measurements = null
     ) {
         $this->id = $id;
@@ -30,6 +32,7 @@ class SensorView
         $this->address = $address;
         $this->positionX = $positionX;
         $this->positionY = $positionY;
+        $this->description = $description;
         $this->measurements = $measurements;
     }
 
@@ -42,7 +45,8 @@ class SensorView
             $sensor->getAddress(),
             $sensor->getPositionX(),
             $sensor->getPositionY(),
-            null
+            null,
+            null,
         );
     }
 
@@ -104,6 +108,16 @@ class SensorView
     public function setPositionY(?int $positionY): void
     {
         $this->positionY = $positionY;
+    }
+
+    public function getDescription(): ?int
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?int $description): void
+    {
+        $this->description = $description;
     }
 
     public function getMeasurements(): ?array

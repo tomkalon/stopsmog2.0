@@ -4,7 +4,7 @@ ui:
     sensors: Czujniki
     settings: Ustawienia
     logout: Wyloguj się
-    
+
   buttons:
     add: Dodaj
     show: Pokaż
@@ -13,21 +13,21 @@ ui:
     remove: Usuń
     return: Wróć
     close: Zamknij
-    
+
   common:
     loading: Wczytywanie...
     data_empty: Brak danych do wyświetlenia.
-  
+
   modal:
     confirm_remove:
       label: Usuwanie
       desc: Czy chcesz usunąć wskazany element?
-      
+
   settings:
     label: Ustawienia
     mapImage: Mapa monitorowanego obszaru
     mapEmpty: Brak zapisanej mapy
-    
+
   user:
     admin:
       label: Panel Administratora
@@ -38,7 +38,7 @@ ui:
     email: Adres email
     password: Hasło
     remember_me: Zapamiętaj mnie
-    
+
   sensor:
     label: Zarządzanie czujnikami
     list: Lista czujników
@@ -53,8 +53,9 @@ ui:
     address: Adres
     positionX: Współrzędne X
     positionY: Współrzędne Y
+    description: Opis
     empty: Brak elementów do wyświetlenia.
-    
+
   city:
     label: Zarządzanie miejscowościami
     list: Lista miejscowości
@@ -68,17 +69,17 @@ ui:
     sensors:
       empty: Brak przypisanych czujników
     map: Mapa miejscowości
-    
+
   measurement:
     hour: Godzina
     date: Data
     pm10value: Wartość PM10 (µg/m3)
     norm: Dopuszczalna norma
-  
+
   flash:
     remove:
       successful: Element został pomyślnie usunięty.
-    
+
   frontpage:
     title: Tabela odczytów
     sensors_list: Lista czujników
