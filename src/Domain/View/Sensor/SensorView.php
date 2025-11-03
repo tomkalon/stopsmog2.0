@@ -13,7 +13,7 @@ class SensorView
     private ?string $address;
     private ?int $positionX;
     private ?int $positionY;
-    private ?int $description;
+    private ?string $description;
     private ?array $measurements;
 
     public function __construct(
