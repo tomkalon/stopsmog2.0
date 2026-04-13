@@ -14,4 +14,6 @@ use App\Domain\Filter\Sensor\SensorFilter;
 interface MeasurementRepositoryInterface
 {
     public function getSensorMeasurementsByFilter(string $sensorId, SensorFilter $sensorFilter): array;
+
+    public function getWeeklyAggregated(string $sensorId): array;
 }

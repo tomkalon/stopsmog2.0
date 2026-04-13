@@ -35,4 +35,29 @@ class MeasurementRepository extends ServiceEntityRepository implements Measureme
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getWeeklyAggregated(string $sensorId): array
+    {
+        $weekStart = new \DateTimeImmutable('7 days ago midnight');
+
+        $sql = '
+            SELECT
+                ROUND(AVG(m.pm10)) AS pm10,
+                ROUND(AVG(m.pm25)) AS pm25,
+                MIN(m.created_at)  AS createdAt
+            FROM measurement m
+            WHERE m.sensor_id = :sensorId
+              AND m.created_at >= :weekStart
+            GROUP BY DATE(m.created_at), FLOOR(HOUR(m.created_at) / 4)
+            ORDER BY DATE(m.created_at) ASC, FLOOR(HOUR(m.created_at) / 4) ASC
+        ';
+
+        return $this->getEntityManager()
+            ->getConnection()
+            ->executeQuery($sql, [
+                'sensorId'  => $sensorId,
+                'weekStart' => $weekStart->format('Y-m-d H:i:s'),
+            ])
+            ->fetchAllAssociative();
+    }
 }
