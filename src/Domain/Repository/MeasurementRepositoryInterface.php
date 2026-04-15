@@ -18,4 +18,6 @@ interface MeasurementRepositoryInterface
     public function getWeeklyAggregated(string $sensorId): array;
 
     public function getMonthlyAggregated(string $sensorId): array;
+
+    public function getRangeAggregated(string $sensorId, \DateTimeImmutable $from, \DateTimeImmutable $to): array;
 }

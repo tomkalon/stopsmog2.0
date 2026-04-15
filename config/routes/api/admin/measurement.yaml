@@ -11,3 +11,10 @@ api_measurements_monthly_get:
   controller: App\UI\Controller\Api\Measurement\MeasurementController::monthlyGet
   options:
     expose: true
+
+api_measurements_range_get:
+  path: /api/sensor-measurements/range
+  methods: [ GET ]
+  controller: App\UI\Controller\Api\Measurement\MeasurementController::rangeGet
+  options:
+    expose: true

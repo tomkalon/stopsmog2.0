@@ -85,4 +85,49 @@ class MeasurementRepository extends ServiceEntityRepository implements Measureme
             ])
             ->fetchAllAssociative();
     }
+
+    public function getRangeAggregated(string $sensorId, \DateTimeImmutable $from, \DateTimeImmutable $to): array
+    {
+        $days = (int) $from->diff($to)->days;
+
+        if ($days <= 3) {
+            // co 1h
+            $groupExpr  = 'DATE(m.created_at), HOUR(m.created_at)';
+            $selectTime = 'MIN(m.created_at) AS createdAt';
+        } elseif ($days <= 14) {
+            // co 4h
+            $groupExpr  = 'DATE(m.created_at), FLOOR(HOUR(m.created_at) / 4)';
+            $selectTime = 'MIN(m.created_at) AS createdAt';
+        } elseif ($days <= 60) {
+            // dziennie
+            $groupExpr  = 'DATE(m.created_at)';
+            $selectTime = 'DATE(m.created_at) AS createdAt';
+        } else {
+            // tygodniowo
+            $groupExpr  = 'YEARWEEK(m.created_at, 1)';
+            $selectTime = 'MIN(m.created_at) AS createdAt';
+        }
+
+        $sql = "
+            SELECT
+                ROUND(AVG(m.pm10)) AS pm10,
+                ROUND(AVG(m.pm25)) AS pm25,
+                {$selectTime}
+            FROM measurement m
+            WHERE m.sensor_id = :sensorId
+              AND m.created_at >= :from
+              AND m.created_at <= :to
+            GROUP BY {$groupExpr}
+            ORDER BY {$groupExpr} ASC
+        ";
+
+        return $this->getEntityManager()
+            ->getConnection()
+            ->executeQuery($sql, [
+                'sensorId' => $sensorId,
+                'from'     => $from->format('Y-m-d H:i:s'),
+                'to'       => $to->format('Y-m-d H:i:s'),
+            ])
+            ->fetchAllAssociative();
+    }
 }
