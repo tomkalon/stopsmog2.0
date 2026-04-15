@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Api from '@Api';
 import DayChart from "@ReactComponent/charts/DayChart";
 import WeekChart from "@ReactComponent/charts/WeekChart";
+import MonthChart from "@ReactComponent/charts/MonthChart";
 import Container from "react-bootstrap/Container";
 import Box from '@mui/material/Box';
 import Spinner from 'react-bootstrap/Spinner';
@@ -34,9 +35,15 @@ export default function (props) {
                     },
                     (data) => setData(data)
                 );
-            } else {
+            } else if (page === 'week') {
                 Api.get(
                     'api_measurements_weekly_get',
+                    {sensor: props.sensor},
+                    (data) => setData(data)
+                );
+            } else {
+                Api.get(
+                    'api_measurements_monthly_get',
                     {sensor: props.sensor},
                     (data) => setData(data)
                 );
@@ -52,6 +59,8 @@ export default function (props) {
             : !!(data && data.items && data.items.length)
     );
 
+
+
     let component = null;
     if (data === 'init') {
         component = <Box className={"py-5"}>
@@ -64,10 +73,9 @@ export default function (props) {
         </Box>;
     } else if (hasData) {
         component = <Box className={"py-1"}>
-            {page === 'day'
-                ? <DayChart data={data}/>
-                : <WeekChart data={data.items}/>
-            }
+            {page === 'day' && <DayChart data={data}/>}
+            {page === 'week' && <WeekChart data={data.items}/>}
+            {page === 'month' && <MonthChart data={data.items}/>}
         </Box>;
     } else {
         component = <Box>
@@ -95,6 +103,9 @@ export default function (props) {
                     </ToggleButton>
                     <ToggleButton value="week" aria-label="right">
                         Tydzień
+                    </ToggleButton>
+                    <ToggleButton value="month" aria-label="right">
+                        Miesiąc
                     </ToggleButton>
                 </ToggleButtonGroup>
             </Box>

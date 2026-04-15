@@ -60,4 +60,29 @@ class MeasurementRepository extends ServiceEntityRepository implements Measureme
             ])
             ->fetchAllAssociative();
     }
+
+    public function getMonthlyAggregated(string $sensorId): array
+    {
+        $monthStart = new \DateTimeImmutable('30 days ago midnight');
+
+        $sql = '
+            SELECT
+                ROUND(AVG(m.pm10)) AS pm10,
+                ROUND(AVG(m.pm25)) AS pm25,
+                DATE(m.created_at) AS createdAt
+            FROM measurement m
+            WHERE m.sensor_id = :sensorId
+              AND m.created_at >= :monthStart
+            GROUP BY DATE(m.created_at)
+            ORDER BY DATE(m.created_at) ASC
+        ';
+
+        return $this->getEntityManager()
+            ->getConnection()
+            ->executeQuery($sql, [
+                'sensorId'   => $sensorId,
+                'monthStart' => $monthStart->format('Y-m-d H:i:s'),
+            ])
+            ->fetchAllAssociative();
+    }
 }

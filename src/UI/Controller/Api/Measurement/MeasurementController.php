@@ -26,4 +26,17 @@ class MeasurementController extends AbstractController
 
         return $this->json(['items' => $items]);
     }
+
+    public function monthlyGet(Request $request): JsonResponse
+    {
+        $sensorId = $request->query->get('sensor');
+
+        if (!$sensorId) {
+            return $this->json(['error' => 'Missing sensor parameter'], 400);
+        }
+
+        $items = $this->measurementRepository->getMonthlyAggregated($sensorId);
+
+        return $this->json(['items' => $items]);
+    }
 }
