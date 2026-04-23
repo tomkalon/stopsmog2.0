@@ -23,10 +23,13 @@
             </div>
             {% for city in cityList %}
                 <a href="{{ path('main_city_show', {id: city.id}) }}">
-                    <div class="map-label-container position-absolute d-flex align-items-center justify-content-center"
+                    <div class="map-label-container position-absolute"
                          style="top: {{ city.positionY }}px; left: {{ city.positionX }}px">
-                        <div class="map-label">{{ city.name }}</div>
-                        {% include 'Main/FrontPage/_measurement_pm10_sensors.html.twig' %}
+                        <div class="map-label-group d-flex align-items-center">
+                            <div class="map-label">{{ city.name }}</div>
+                            {% include 'Main/FrontPage/_measurement_pm10_sensors.html.twig' %}
+                        </div>
+                        <div class="map-dot"></div>
                     </div>
                 </a>
             {% endfor %}

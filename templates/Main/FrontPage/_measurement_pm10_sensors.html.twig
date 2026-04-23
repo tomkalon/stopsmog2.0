@@ -12,7 +12,7 @@
     {% set pm10sum = pm10sum / activeSensorsSum %}
 {% endif %}
 
-{% if pm10sum > 0 and pm10sum <= 20 %}
+{% if pm10sum is not null and pm10sum >= 0 and pm10sum <= 20 %}
     <div class="map-marker green">{{ activeSensorsSum }}</div>
 {% elseif pm10sum > 20 and pm10sum <= 50 %}
     <div class="map-marker yellow">{{ activeSensorsSum }}</div>

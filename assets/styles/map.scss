@@ -25,16 +25,44 @@
   }
 
   &-label-container {
-    transition: opacity 1s, background-color 1.5s, color 1.5s, transform 1.5s;
-    transform: scale(1);
-    &:hover {
-      transform: scale(1.4)!important;
+    &.position-absolute {
+      display: block !important;
+      width: 0;
+      height: 0;
+      overflow: visible;
+
+      &:hover .map-label-group {
+        transform: translateY(-50%) scale(1.4);
+      }
     }
   }
 
-  [data-map]:hover .map-label-container {
+  &-label-group {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 1.5s;
+    white-space: nowrap;
+    z-index: 30;
+  }
+
+  &-dot {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e00000;
+    border: 2px solid #ffffff;
+    animation: map-dot-blink 1.4s ease-in-out infinite;
+    z-index: 20;
+  }
+
+  [data-map]:hover .map-label-group {
     cursor: pointer;
-    transform: scale(1.2);
+    transform: translateY(-50%) scale(1.2);
   }
 
   &-label {
@@ -79,7 +107,6 @@
     justify-content: center;
     align-items: center;
     font-size: 14px;
-
     &.green {
       background: #22720b;
     }
@@ -102,6 +129,11 @@
       background: #6e0579;
     }
   }
+}
+
+@keyframes map-dot-blink {
+  0%, 100% { transform: scale(1.4); }
+  50% { transform: scale(0.7); }
 }
 
 .settings {
