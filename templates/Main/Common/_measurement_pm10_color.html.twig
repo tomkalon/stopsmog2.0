@@ -1,4 +1,4 @@
-{% if sensor.measurements|first.pm10 > 0 and sensor.measurements|first.pm10 <= 20 %}
+{% if sensor.measurements|first.pm10 is not null and sensor.measurements|first.pm10 >= 0 and sensor.measurements|first.pm10 <= 20 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #50d08b, #00b050 50%);"></div>
 {% elseif sensor.measurements|first.pm10 > 20 and sensor.measurements|first.pm10 <= 50 %}
     <div style="width: 20px; height: 20px; border-radius: 3px; background: linear-gradient(225deg, #ffff90, #d8ff00 50%);"></div>
